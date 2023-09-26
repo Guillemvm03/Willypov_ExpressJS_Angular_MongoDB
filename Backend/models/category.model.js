@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const slugify = require('slug');
+const slugify = require('slugify');
 const uniqueValidator = require('mongoose-unique-validator');
 
 const category_schema = mongoose.Schema({
