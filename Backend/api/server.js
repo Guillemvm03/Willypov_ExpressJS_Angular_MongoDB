@@ -7,7 +7,7 @@ const connect_db = require("../config/dbConfig.js");
 
 const app = express();
 
-const port = process.env.PORT;
+const port = process.env.PORT || 8080;
 
 connect_db();
 
@@ -19,12 +19,10 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 
-// require('../models/index.js');
-// require('./app/config/passport');
-// app.use(require("../routes/index.js"));
-app.use('/api/categories', require('../routes/categoryRoutes.js'));
 
-// app.use('/api/profiles', require('../routes/profileRoutes'));
+app.use('/api/categories', require('../routes/categoryRoutes.js'));
+app.use('/api/products', require('../routes/productRoutes.js'));
+
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
