@@ -32,9 +32,19 @@ const product_schema = mongoose.Schema({
 product_schema.plugin(uniqueValidator);
 
 product_schema.pre('save', function(next){
-    this.slug = slugify(this.title, { lower: true, replacement: '-'});
+    this.slug = slugify(this.name, { lower: true, replacement: '-'});
     next();
 });
 
+product_schema.methods.toProductResponse = async function () {
+    return {
+        slug: this.slug,
+        name: this.name,
+        price: this.price,
+        description: this.description,
+        id_category: this.id_category,
+        product_images: this.product_images,
+    }
+}
 
 module.exports = mongoose.model('Product', product_schema);

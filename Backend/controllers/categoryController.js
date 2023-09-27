@@ -5,7 +5,21 @@ const Category = require("../models/categoryModel");
 
 const findAll_category = AsyncHandler(async (req, res) => {
 
-    res.json("categoria");
+    const categories = await Category.find({}, {});
+    // res.json(categories)
+    
+
+    if (!categories) {
+        res.status(400).json({message: "Ha ocurrido un error al buscar las categorias"});
+    }
+
+    return res.status(200).json({
+        categories: await Promise.all(categories.map(async category => {
+            return await category.toCategoryResponse();
+        })),
+    });
+
+    // res.json(categories.map(category => category.toCategoryResponse()));
 
 })
 
@@ -17,7 +31,24 @@ const findOne_category = AsyncHandler(async (req, res) => {
 
 const create_category = AsyncHandler(async (req, res) => {
 
-    res.json("categoria creada");
+    // res.json(req.body);
+
+    const category_data = {
+        id_cat: req.body.id_cat,
+        category_name: req.body.category_name,
+        image: req.body.image,
+        products: []
+      };
+      const category = new Category(category_data);
+      await category.save();
+
+      if (!category) {
+        res.status(400).json({message: "Ha ocurrido un error al crear la categoria"});
+    }
+
+      return res.status(200).json({
+        category: await category.toCategoryResponse()
+    })
 
 })
 

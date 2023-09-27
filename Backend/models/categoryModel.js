@@ -26,9 +26,21 @@ const category_schema = mongoose.Schema({
 category_schema.plugin(uniqueValidator);
 
 category_schema.pre('save', function(next){
-    this.slug = slugify(this.title, { lower: true, replacement: '-'});
+    this.slug = slugify(this.category_name, { lower: true, replacement: '-'});
     next();
 });
+
+
+
+category_schema.methods.toCategoryResponse = async function () {
+    return {
+        slug: this.slug,
+        id_cat: this.id_cat,
+        category_name: this.category_name,
+        image: this.image,
+        products: this.products,
+    }
+}
 
 
 module.exports = mongoose.model('Category', category_schema);
