@@ -42,5 +42,19 @@ category_schema.methods.toCategoryResponse = async function () {
     }
 }
 
+category_schema.methods.addProduct = function (productId) {
+    if(this.products.indexOf(productId) === -1){
+        this.products.push(productId);
+    }
+    return this.save();
+};
+
+category_schema.methods.removeProduct = function (productId) {
+    if(this.products.indexOf(productId) !== -1){
+        this.products.remove(productId);
+    }
+    return this.save();
+};
+
 
 module.exports = mongoose.model('Category', category_schema);

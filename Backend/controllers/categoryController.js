@@ -8,7 +8,6 @@ const findAll_category = AsyncHandler(async (req, res) => {
     const categories = await Category.find({}, {});
     // res.json(categories)
     
-
     if (!categories) {
         res.status(400).json({message: "Ha ocurrido un error al buscar las categorias"});
     }
@@ -37,6 +36,7 @@ const findOne_category = AsyncHandler(async (req, res) => {
 
 })
 
+
 const create_category = AsyncHandler(async (req, res) => {
 
     const category_data = {
@@ -45,6 +45,8 @@ const create_category = AsyncHandler(async (req, res) => {
         image: req.body.image,
         products: []
       };
+
+      
       const category = new Category(category_data);
       await category.save();
 
