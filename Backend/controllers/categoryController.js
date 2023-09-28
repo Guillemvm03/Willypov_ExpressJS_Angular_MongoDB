@@ -19,19 +19,25 @@ const findAll_category = AsyncHandler(async (req, res) => {
         })),
     });
 
-    // res.json(categories.map(category => category.toCategoryResponse()));
-
 })
 
 const findOne_category = AsyncHandler(async (req, res) => {
 
-    res.json("categoria encontrada");
+    const slug = req.params.id;
+
+    const category = await Category.findOne({slug}).exec();
+
+    if (!category) {
+        res.status(400).json({message: "Categoria no encontrada"});
+    }
+
+    return res.status(200).json({
+       category: await category.toCategoryResponse()
+    });
 
 })
 
 const create_category = AsyncHandler(async (req, res) => {
-
-    // res.json(req.body);
 
     const category_data = {
         id_cat: req.body.id_cat,
