@@ -4,14 +4,14 @@ import { ActivatedRoute } from '@angular/router';
 // import { User, UserService, Profile } from '../core';
 // import { concatMap ,  tap } from 'rxjs/operators';
 
-console.log("hola");
+console.log("hola shop");
 @Component({
-    selector: 'app-home-page',
-    templateUrl: './home.component.html',
+    selector: 'app-shop-page',
+    templateUrl: './shop.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush
   })
 
-  export class HomeComponent implements OnInit {
+  export class ShopComponent implements OnInit {
     constructor() {}
     ngOnInit() {}
   }
