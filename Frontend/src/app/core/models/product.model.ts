@@ -7,4 +7,5 @@ export interface Product {
   description: string;
   id_category: string;
   location: string;
+  product_images: [string];
 }
