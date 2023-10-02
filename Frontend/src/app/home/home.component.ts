@@ -1,14 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit} from '@angular/core';
 
-// import { User, UserService, Profile } from '../core';
-// import { concatMap ,  tap } from 'rxjs/operators';
-
-console.log("hola");
 @Component({
     selector: 'app-home-page',
     templateUrl: './home.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    styleUrls: ['./home.component.css'],
+ 
   })
 
   export class HomeComponent implements OnInit {

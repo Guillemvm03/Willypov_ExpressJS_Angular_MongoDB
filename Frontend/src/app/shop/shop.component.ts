@@ -1,14 +1,12 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
-// import { User, UserService, Profile } from '../core';
-// import { concatMap ,  tap } from 'rxjs/operators';
+// import { ActivatedRoute } from '@angular/router';
 
-console.log("hola shop");
+
 @Component({
     selector: 'app-shop-page',
     templateUrl: './shop.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    // changeDetection: ChangeDetectionStrategy.OnPush
   })
 
   export class ShopComponent implements OnInit {
