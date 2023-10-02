@@ -3,13 +3,15 @@ infinite-scroll
 [infiniteScrollDistance] = "1"
 [infiniteScrollThrottle] = "50"
 (scrolled)="scroll()"> -->
-  
-  <!-- <h1>Categories</h1>
+
+<!-- <div class="categories">
+<h1>Categories</h1>
   <div class="row">
     <div class="col-md-4" *ngFor="let category of categories">
       <div class="cards">
         <div class="card-body">
           <img src="../../../assets/img/{{category.image}}" [routerLink]="['/shop/categories/', category.slug]">
+         <h1>{{category.id_cat}}</h1>
         </div>
       </div>
     </div>
@@ -17,4 +19,16 @@ infinite-scroll
 
 </div> -->
 
-<div class="col-md-4" *ngFor="let category of categories">
+
+
+<div *ngFor="let category of categories">
+  <img src="../../../assets/img/{{category.image}}" [routerLink]="['/shop/categories/', category.slug]">
+  <!-- <h1>{{ category.id_cat }}</h1> -->
+</div>
+
+
+
+
+
+
+

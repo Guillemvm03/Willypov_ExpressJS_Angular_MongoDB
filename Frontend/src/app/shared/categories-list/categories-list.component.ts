@@ -9,43 +9,29 @@ import { CategoryService, Category } from '../../core'
 
 export class CategoriesListComponent implements OnInit {
 
-  categories: Category[] = [];
-  offset = 0;
+  categories: Category[] = []; 
+    // categories!: Category[]
 
   constructor(private CategoryService: CategoryService) { }
 
   ngOnInit(): void {
-    // this.getCategories();
-    console.log("ADS")
+    
+    this.retrieveCategories();
+    
   }
 
-  // getRequestParams(offset: number, limit: number): any {
-  //   let params: any = {};
 
-  //   params[`offset`] = offset;
-  //   params[`limit`] = limit;
-
-  //   return params;
-  // }
-
-  getCategories() {
-    // const params = this.getRequestParams(this.offset, 3);
-    // const params = this.CategoryService.get_categories(params).subscribe(
-      this.CategoryService.all_categories().subscribe(
-      (data) => {
-        this.categories = this.categories.concat(data);
-        console.log(data);
-        // this.offset = this.offset + 3;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-
+  retrieveCategories() {
+    this.CategoryService.all_categories().subscribe({
+      next: (data:any) => {
+              this.categories = data.categories
+              // console.log(this.categories);
+            }
+          });
   }
-
-  // scroll() {
-  //   this.getCategories();
-  // }
-
+  
+    
 }
+
+
+
