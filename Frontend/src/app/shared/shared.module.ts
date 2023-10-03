@@ -12,9 +12,9 @@ import { CategoriesListComponent } from "./categories-list/categories-list.compo
 import { ProductsListComponent } from './products-list/products-list.component';
 import { CardProductComponent } from './card-product/card-product.component';
 
-import { ProductDetailsComponent } from './product-details/product-details.component';
-// import { CarouselComponent } from './carousel/carousel.component';
+import { CarouselComponent } from './carousel/carousel.component';
 // import { CarouselItemsComponent } from './carousel-items/carousel-items.component';
+
 // import { FiltersComponent } from './filters/filters.component';
 // import { CommentsComponent } from './comments/comments.component';
 // import { SearchComponent } from './search/search.component';
@@ -34,7 +34,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
         CategoriesListComponent,
         ProductsListComponent,
         CardProductComponent,
-        ProductDetailsComponent,
+        CarouselComponent
+        // CarouselItemsComponent
         // CardCategoriesComponent
 
         // ProductDetailsComponent,
@@ -52,7 +53,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
         CategoriesListComponent,
         ProductsListComponent,
         CardProductComponent,
-        ProductDetailsComponent,
+        CarouselComponent
+        // CarouselItemsComponent
         // CardCategoriesComponent
         // ProductDetailsComponent,
         // FormsModule,
