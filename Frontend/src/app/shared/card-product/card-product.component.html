@@ -28,7 +28,8 @@
         <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
             <div class="col">
                 <div class="card h-100 shadow-sm">
-                    <img [routerLink]="['/details/', product.slug]" src="../../../assets/{{images}}" class="card-img-top" alt="...">
+                    <!-- <img src="../../../assets/{{product.product_images[0]}}" alt=""> -->
+                    <img [routerLink]="['i/details/', product.slug]" src="../../../assets/img/{{images}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <div class="clearfix mb-3">
                             <span class="float-start badge rounded-pill bg-primary">{{product.name}}</span>

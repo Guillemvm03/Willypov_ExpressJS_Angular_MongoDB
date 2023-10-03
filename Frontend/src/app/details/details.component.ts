@@ -12,7 +12,7 @@ import { NgControlStatusGroup } from '@angular/forms';
 export class DetailsComponent implements OnInit {
 
     product!: Product;
-    images: String[] = [];
+    // images: String[] = [];
     slug!: string | null;
 
     constructor(
@@ -29,9 +29,10 @@ export class DetailsComponent implements OnInit {
     get_product() {
         if (typeof this.slug === 'string') {
            this.ProductService.get_product(this.slug).subscribe({
-                next: data => {
-                    this.product = data;
-                    this.images = data.product_images!;
+                next: (data: any) => {
+                    this.product = data.product;
+
+                    // this.images = data.product_images!;
                     console.log(this.product);
                 },
                 error: e => { 
