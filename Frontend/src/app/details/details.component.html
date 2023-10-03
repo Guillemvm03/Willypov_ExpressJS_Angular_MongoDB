@@ -1,62 +1,62 @@
-<!-- <div class="details_page">
-    <div *ngIf="!product">No product</div>
-    <div class="product" *ngIf="product">
-        <div class="product-image">
-            <app-carousel [images_product]="images" [autoSlide]="true" [controls_2]="true"></app-carousel>
-        </div>
-        <div class="product-info">
-            <div class="title">
-                <h3>{{product.name}}</h3>
-                <p class="price">Price: {{product.price}} €</p>
+
+            <!-- Page Content -->
+<div class="container">
+
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">{{product.name}}
+      <small></small>
+    </h1>
+  
+    <!-- Portfolio Item Row -->
+    <div class="row">
+  
+      <div class="col-md-8">
+        <img class="img-fluid" src="../../assets/img/{{product.product_images[0]}}" alt="">
+        <!-- src="https://via.placeholder.com/750x500" -->
+      </div>
+  
+      <div class="col-md-4">
+        <h3 class="my-3">Product Description</h3>
+        <p>{{product.description}}</p>
+        <br>
+        <h3 class="my-3">Product Details</h3>
+        <p class="new-price text-bold mb-1">${{product.price}}</p>
+        
+
+        <div class="buttons d-flex my-5">
+            <div class="block">
+                <a href="#" class="shadow btn custom-btn ">Follow</a>
             </div>
-            <div class="product-bio">
-                <div class="description"><strong>Description: </strong>{{product.description}}.</div>
-                <div class="category"><strong>Category: </strong>{{product.name_cat}}.</div>
-                <div class="state"><strong>State: </strong>{{product.state}}.</div>
+            <div class="block">
+                <button class="shadow btn custom-btn">Add to cart</button>
             </div>
-            <div class="author" [routerLink]="['/profile', product.author.username]">
-                <img class="author-avatar" src="{{product.author.image}}">
-                <p>{{product.author.username}}</p>
+
+            <div class="block quantity">
+                <input type="number" class="form-control" id="cart_quantity" value="1" min="0" max="5" placeholder="Enter email" name="cart_quantity">
             </div>
         </div>
-        <div class="product_like">
-            <app-favorite-button [product]="product"></app-favorite-button>
-        </div>
+
+
+
+      </div>
+  
     </div>
-
-    <div class="comments-section">
-        <app-comments *ngFor="let comment of comments" [comment]="comment" (deleteComment)="delete_comment(comment)"></app-comments>
-        <div class="create-comment" *appShowAuthed="true"> 
-            <form (ngSubmit)="create_comment()">
-                <div class="comment-new">
-                    <div class="comment-avatar-container">
-                        <img class="comment-avatar" src={{user_image}}/>
-                    </div>
-                    <fieldset [disabled]="isSubmitting">
-                        <textarea class="comment-textarea" name="enter-comment" placeholder="Write a comment..." [formControl]="commentControl"></textarea>
-                        <div class="comment-actions">
-                            <button class="post" type="submit">COMMENT</button>
-                            <button class="cancel" type="button" (click)="empty_comment()">CANCEL</button>
-                        </div>
-                    </fieldset>
-                </div>
-            </form>
-        </div>
+    <!-- /.row -->
+  
+    <!-- Related Projects Row -->
+    <hr>
+    <h3 class="my-4">Related Products</h3>
+  
+    <div class="row">
+  
+      <div class="col-md-3 col-sm-6 mb-4">
+        <a href="#">
+              <img class="img-fluid" src="https://via.placeholder.com/500x300" alt="">
+            </a>
+      </div>
+  
     </div>
-</div> -->
-
-
-<!-- <div *ngIf="listProducts" class="container_list_products">
-    <div class="no_products" *ngIf="listProducts.length == 0">No products</div>
-    <app-card-product class="item" *ngFor="let product of listProducts" [product]="product"></app-card-product>
-</div> -->
-
-<div *ngIf="!product">No product</div>
-    <div class="product" *ngIf="product">
-        <div class="product-image">
-        </div>
-        <div class="product-info">
-            <div class="title">
-                <h3>{{product.name}}</h3>
-                <p class="price">Price: {{product.price}} €</p>
-            </div>
+    <!-- /.row -->
+  <br><br>
+  </div>
+  <!-- /.container -->
