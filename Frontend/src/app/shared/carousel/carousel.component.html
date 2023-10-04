@@ -1,85 +1,76 @@
-<!-- <div *ngIf="category.length > 0" class="carousel-home">
+<!-- <mdb-carousel [controls]="true" [indicators]="true">
+  <mdb-carousel-item>
+    <img
+      src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
+      class="d-block w-100"
+      alt="..."
+    />
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <img
+      src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
+      class="d-block w-100"
+      alt="..."
+    />
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <img
+      src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
+      class="d-block w-100"
+      alt="..."
+    />
+  </mdb-carousel-item>
+</mdb-carousel> -->
 
-    <img *ngFor="let category of category; let i = index" src="../../../assets/img/{{category.image}}" 
-    [ngClass]="{'image-active': selectIndex === i}" [routerLink]="['/shop/categories/', category.slug]">
 
-    <div *ngIf="indicators" class="carousel-dot-home">
-        <span *ngFor="let dot of category; let i = index" class="dot"
-        [ngClass]="{'active':selectIndex === i}"
-        (click)="selectImage(i)"></span>
+
+<!-- <mdb-carousel [controls]="true" [indicators]="true" [animation]="'slide'" [interval]="0">
+  <mdb-carousel-item>
+    <img
+      src="../../../assets/img/Camisa_blanca.jpg"
+      class="d-block w-50"
+    />
+    <div class="carousel-caption d-none d-md-block">
+      <h5>Nombre</h5>
     </div>
 
-    <div *ngIf="controls" class="btn-carousel btn-prev">
-        <i class="fa-sharp fa-solid fa-angles-left btn-prev-carousel icon-prev" (click)="Prev()"></i>
-    </div>
+  </mdb-carousel-item>
+</mdb-carousel> -->
 
-    <div *ngIf="controls" class="btn-carousel btn-next">
-        <i class="fa-sharp fa-solid fa-angles-right btn-next-carousel icon-next" (click)="Next()"></i>
+<div>
+<mdb-carousel [controls]="true" [indicators]="true" [dark]="true">
+  <mdb-carousel-item>
+    <img
+      src="https://mdbootstrap.com/img/Photos/Slides/img%20(19).webp"
+      class="d-block w-100"
+      alt="..."
+    />
+    <div class="carousel-caption d-none d-md-block">
+      <h5>First slide label</h5>
+      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
     </div>
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <img
+      src="https://mdbootstrap.com/img/Photos/Slides/img%20(35).webp"
+      class="d-block w-100"
+      alt="..."
+    />
+    <div class="carousel-caption d-none d-md-block">
+      <h5>Second slide label</h5>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <img
+      src="https://mdbootstrap.com/img/Photos/Slides/img%20(40).webp"
+      class="d-block w-100"
+      alt="..."
+    />
+    <div class="carousel-caption d-none d-md-block">
+      <h5>Third slide label</h5>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+    </div>
+  </mdb-carousel-item>
+</mdb-carousel>
 </div>
-
-<div *ngIf="images_product" class="carousel-details">
-    <img *ngFor="let img_product of images_product; let i = index" src="../../../assets/img/{{img_product}}" 
-    [ngClass]="{'image-active': selectIndex_product_img === i}">
-
-     <div *ngIf="indicators" class="carousel-dot-details">
-        <span *ngFor="let dot of images_product; let i = index" class="dot"
-        [ngClass]="{'active':selectIndex_product_img === i}"
-        (click)="selectImage(i)"></span>
-    </div>
-
-    <div *ngIf="controls_2" class="btn-carousel button-prev">
-        <i class="fa-sharp fa-solid fa-angle-left btn-prev-carousel icon-prev" (click)="Prev()"></i>
-    </div>
-
-    <div *ngIf="controls_2" class="btn-carousel button-next">
-        <i class="fa-sharp fa-solid fa-angle-right btn-next-carousel icon-next" (click)="Next()"></i>
-    </div>
-</div> -->
-
-<!-- <ngb-carousel>
-    <ng-template ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img src="assets/img-01.jpeg" alt="Angular Carousel 1">
-      </div>
-      <div class="carousel-caption">
-        <h3>Title Goes Here</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-    </ng-template>
-    <ng-template ngbSlide>
-      <div class="picsum-img-wrapper">
-        <img src="assets/img-02.jpeg" alt="Angular Carousel 2">
-      </div>
-      <div class="carousel-caption">
-        <h3>Title Goes Here</h3>
-        <p>Consectetur tortor volutpat pretium.</p>
-      </div>
-    </ng-template>
-  </ngb-carousel> -->
-
-  <!-- <h1>HOLA CAROUSEL</h1> -->
-
-
-  <!-- <div id='gfg'>
-    <h2>GeeksforGeeks</h2>
-    <h4>Angular MDBootstrap Carousel Component</h4>
-    <br />
-    <mdb-carousel [isControls]="false">
-        <mdb-carousel-item> 
-            <img class="w-25" src=
-"https://media.geeksforgeeks.org/wp-content/uploads/20220221102734/1.jpg" 
-                 alt="First slide"> 
-        </mdb-carousel-item>
-        <mdb-carousel-item> 
-            <img class="w-25" src=
-"https://media.geeksforgeeks.org/wp-content/uploads/20220221102734/2.png" 
-                 alt="Second slide"> 
-        </mdb-carousel-item>
-        <mdb-carousel-item> 
-            <img class="w-25" src=
-"https://media.geeksforgeeks.org/wp-content/uploads/20220221102735/3.png" 
-                 alt="Third slide"> 
-        </mdb-carousel-item>
-    </mdb-carousel>
-</div> -->
