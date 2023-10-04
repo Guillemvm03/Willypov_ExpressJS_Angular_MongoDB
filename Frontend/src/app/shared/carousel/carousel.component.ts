@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Carousel,CarouselService } from '../../core'
+import { Carousel,CarouselService, Product_images } from '../../core'
 
 
 @Component({
@@ -9,8 +9,13 @@ import { Carousel,CarouselService } from '../../core'
 })
 
 export class CarouselComponent implements OnInit {
+  @Input() page : String = "";
+  @Input() slug : String = "";
+
+  home : Boolean = false;
 
   listCarousel: Carousel[] = [];
+  product_images: Product_images[] =[];
 
   constructor(
     private CarouselService: CarouselService
@@ -18,17 +23,33 @@ export class CarouselComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.get_carousel();
+    if (this.page = "home"){
+      this.home = true;
+      this.get_carousel_categories();
+    } else {
+      this.home = false;
+      console.log('details images');
+    }
+   
+
   }
   
-  get_carousel() {
+  get_carousel_categories() {
 
     this.CarouselService.getCarousel().subscribe(
       (data: any) => {
-        this.listCarousel = data.carousel;
-        console.log(this.listCarousel);
+        this.listCarousel = data.categories;
+        // console.log(this.listCarousel);
 
       });
+  }
+
+  get_product_images(){
+    this.CarouselService.getProduct_images(this.slug).subscribe(
+      (data: any) => {
+        this.product_images = data;
+      }
+    )
   }
 
 }

@@ -20,9 +20,9 @@ const URL = 'http://localhost:8080/api/categories';
       return this.http.get<Category[]>(URL, {params});
     }
   
-    all_categories(): Observable<Category[]> {
-      return this.http.get<Category[]>(URL);
-    }
+    // all_categories(): Observable<Category[]> {
+    //   return this.http.get<Category[]>(URL);
+    // }
   
     get_category(id: String): Observable<Category> {
       return this.http.get<Category>(`${URL}/${id}`);

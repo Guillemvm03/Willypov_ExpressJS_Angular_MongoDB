@@ -1,76 +1,16 @@
-<!-- <mdb-carousel [controls]="true" [indicators]="true">
-  <mdb-carousel-item>
-    <img
-      src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
-      class="d-block w-100"
-      alt="..."
-    />
-  </mdb-carousel-item>
-  <mdb-carousel-item>
-    <img
-      src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
-      class="d-block w-100"
-      alt="..."
-    />
-  </mdb-carousel-item>
-  <mdb-carousel-item>
-    <img
-      src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
-      class="d-block w-100"
-      alt="..."
-    />
-  </mdb-carousel-item>
-</mdb-carousel> -->
-
-
-
-<!-- <mdb-carousel [controls]="true" [indicators]="true" [animation]="'slide'" [interval]="0">
-  <mdb-carousel-item>
-    <img
-      src="../../../assets/img/Camisa_blanca.jpg"
-      class="d-block w-50"
-    />
+<mdb-carousel [controls]="true" [indicators]="true" [animation]="'slide'" [interval]="0">
+  <mdb-carousel-item *ngFor="let category of listCarousel">
+    <img src="../../../assets/img/{{category.image}}" [routerLink]="['/shop/categories/', category.slug]" class="d-block w-20" *ngIf="home">
     <div class="carousel-caption d-none d-md-block">
-      <h5>Nombre</h5>
-    </div>
-
-  </mdb-carousel-item>
-</mdb-carousel> -->
-
-<div>
-<mdb-carousel [controls]="true" [indicators]="true" [dark]="true">
-  <mdb-carousel-item>
-    <img
-      src="https://mdbootstrap.com/img/Photos/Slides/img%20(19).webp"
-      class="d-block w-100"
-      alt="..."
-    />
-    <div class="carousel-caption d-none d-md-block">
-      <h5>First slide label</h5>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      <h5>{{category.slug}}</h5>
     </div>
   </mdb-carousel-item>
-  <mdb-carousel-item>
-    <img
-      src="https://mdbootstrap.com/img/Photos/Slides/img%20(35).webp"
-      class="d-block w-100"
-      alt="..."
-    />
+
+  <!-- <mdb-carousel-item *ngFor="let category of listCarousel">
+    <img src="../../../assets/img/{{category.image}}" [routerLink]="['/shop/categories/', category.slug]" class="d-block w-20" *ngIf="home">
     <div class="carousel-caption d-none d-md-block">
-      <h5>Second slide label</h5>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <h5>{{category.slug}}</h5>
     </div>
-  </mdb-carousel-item>
-  <mdb-carousel-item>
-    <img
-      src="https://mdbootstrap.com/img/Photos/Slides/img%20(40).webp"
-      class="d-block w-100"
-      alt="..."
-    />
-    <div class="carousel-caption d-none d-md-block">
-      <h5>Third slide label</h5>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-    </div>
-  </mdb-carousel-item>
+  </mdb-carousel-item> -->
+
 </mdb-carousel>
-</div>
