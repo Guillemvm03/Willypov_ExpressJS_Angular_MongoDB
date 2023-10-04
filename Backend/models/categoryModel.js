@@ -44,6 +44,7 @@ category_schema.methods.toCategoryResponse = async function () {
 
 category_schema.methods.toCategoryCarouselResponse = async function () {
     return {
+        id_cat: this.id_cat,
         slug: this.slug,
         image: this.image,
     }

@@ -1,5 +1,5 @@
 const AsyncHandler = require("express-async-handler");
-const Category = require("../models/category.model.js");
+const Category = require("../models/categoryModel");
 
 const get_carousel_category = AsyncHandler(async (req, res) => {
     

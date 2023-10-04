@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Category } from '../models/category.model';
+import { Carousel } from '../models/carousel.model';
 
-const URL = 'http://localhost:8080/api/carousel/categories';
+const URL = ' ';
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +13,8 @@ export class CarouselService {
 
   constructor(private http: HttpClient) { }
 
-  getCarousel(): Observable<Category[]> {    
-    return this.http.get<Category[]>(URL);
+  getCarousel(): Observable<Carousel[]> {    
+    return this.http.get<Carousel[]>(URL);
   }
 
 }
