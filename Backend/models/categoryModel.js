@@ -42,6 +42,14 @@ category_schema.methods.toCategoryResponse = async function () {
     }
 }
 
+category_schema.methods.toCategoryCarouselResponse = async function () {
+    return {
+        id_cat: this.id_cat,
+        slug: this.slug,
+        image: this.image,
+    }
+}
+
 category_schema.methods.addProduct = function (productId) {
     if(this.products.indexOf(productId) === -1){
         this.products.push(productId);

@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-// import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+// import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
+
+import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 // import { NgxMultiselectModule } from '@ngx-lib/multiselect';
 
 import { CategoriesListComponent } from "./categories-list/categories-list.component";
@@ -31,13 +33,15 @@ import { CarouselComponent } from './carousel/carousel.component';
         CommonModule,
         HttpClientModule,
         RouterModule,
-        InfiniteScrollModule
+        InfiniteScrollModule,
+        MdbCarouselModule
     ],
     declarations: [
         CategoriesListComponent,
         ProductsListComponent,
         CardProductComponent,
         CarouselComponent
+        
         // CarouselItemsComponent
         // CardCategoriesComponent
 
@@ -57,6 +61,7 @@ import { CarouselComponent } from './carousel/carousel.component';
         ProductsListComponent,
         CardProductComponent,
         CarouselComponent
+        
         // CarouselItemsComponent
         // CardCategoriesComponent
         // ProductDetailsComponent,
