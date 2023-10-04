@@ -1,5 +1,6 @@
 const AsyncHandler = require("express-async-handler");
 const Category = require("../models/categoryModel");
+const Product = require("../models/productModel");
 
 const get_carousel_category = AsyncHandler(async (req, res) => {
     
@@ -15,6 +16,24 @@ const get_carousel_category = AsyncHandler(async (req, res) => {
         });
 })
 
+const findCarouselProduct = AsyncHandler(async (req, res) => {
+
+    const slug = req.params.id;
+
+    const product = await Product.findOne({slug}).exec();
+
+    if (!product) {
+        res.status(400).json({message: "Producto no encontrado"});
+    }
+
+    return res.status(200).json({
+       product: await product.toProductCarouselResponse()
+    });
+
+})
+
+
 module.exports = {
-    get_carousel_category
+    get_carousel_category,
+    findCarouselProduct
 }
