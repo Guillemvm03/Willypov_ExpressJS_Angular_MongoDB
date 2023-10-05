@@ -10,7 +10,8 @@ import { Carousel,CarouselService } from '../../core'
 
 export class CarouselComponent implements OnInit {
 
-  listCarousel: Carousel[] = [];
+  listCarousel: Carousel[] = []
+  // ;
 
   constructor(
     private CarouselService: CarouselService
@@ -18,14 +19,14 @@ export class CarouselComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.get_carousel();
+    this.get_carousel_categories();
   }
   
-  get_carousel() {
+  get_carousel_categories() {
 
     this.CarouselService.getCarousel().subscribe(
       (data: any) => {
-        this.listCarousel = data.carousel;
+        this.listCarousel = data.categories;
         console.log(this.listCarousel);
 
       });

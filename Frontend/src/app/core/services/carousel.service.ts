@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Carousel } from '../models/carousel.model';
 
-const URL = ' ';
+const URL = 'http://localhost:8080/api/carousel/categories';
 
 @Injectable({
   providedIn: 'root',
