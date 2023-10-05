@@ -4,9 +4,9 @@ const Category = require("../models/categoryModel");
 // console.log('patata');
 
 const findAll_category = AsyncHandler(async (req, res) => {
-
-    const categories = await Category.find({}, {});
-    // res.json(categories)
+    const { offset, limit } = req.query;
+    const categories = await Category.find({}, {}, {skip: Number(offset), limit: Number(limit)});
+    // res.json(req.query)
     
     if (!categories) {
         res.status(400).json({message: "Ha ocurrido un error al buscar las categorias"});

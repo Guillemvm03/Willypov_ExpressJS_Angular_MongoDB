@@ -1,6 +1,7 @@
 
             <!-- Page Content -->
 <div class="container">
+   
 
     <!-- Portfolio Item Heading -->
     <h1 class="my-4">{{product.name}}
@@ -11,7 +12,7 @@
     <div class="row">
   
       <div class="col-md-8">
-        <img class="img-fluid" src="../../assets/img/{{product.product_images[0]}}" alt="">
+        <app-carousel page="details" slug="{{product.slug}}"></app-carousel>
         <!-- src="https://via.placeholder.com/750x500" -->
       </div>
   

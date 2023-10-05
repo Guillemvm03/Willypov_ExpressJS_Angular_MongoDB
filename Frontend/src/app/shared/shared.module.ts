@@ -8,12 +8,13 @@ import { RouterModule } from '@angular/router';
 
 
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
-// import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 // import { NgxMultiselectModule } from '@ngx-lib/multiselect';
 
 import { CategoriesListComponent } from "./categories-list/categories-list.component";
 import { ProductsListComponent } from './products-list/products-list.component';
 import { CardProductComponent } from './card-product/card-product.component';
+
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { CarouselComponent } from './carousel/carousel.component';
 // import { CarouselItemsComponent } from './carousel-items/carousel-items.component';
@@ -32,6 +33,7 @@ import { CarouselComponent } from './carousel/carousel.component';
         CommonModule,
         HttpClientModule,
         RouterModule,
+        InfiniteScrollModule,
         MdbCarouselModule
     ],
     declarations: [

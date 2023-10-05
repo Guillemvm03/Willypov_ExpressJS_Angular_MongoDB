@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { FooterComponent, HeaderComponent, SharedModule } from './shared';
 // import { NgbModule} from  '@ng-bootstrap/ng-bootstrap';
-import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 @NgModule({
   declarations: [
     AppComponent,
