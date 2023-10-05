@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Carousel } from '../models/carousel.model';
 
 const URL = 'http://localhost:8080/api/carousel/categories';
+const URL_images = "http://localhost:8080/api/carousel/products"
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,6 @@ export class CarouselService {
   }
 
   getProduct_images(slug : String): Observable<Carousel[]> {    
-    return this.http.get<Carousel[]>(`${URL}/${slug}`);
+    return this.http.get<Carousel[]>(`${URL_images}/${slug}`);
   }
 }

@@ -23,12 +23,13 @@ export class CarouselComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    if (this.page = "home"){
+    if (this.page === "home"){
       this.home = true;
       this.get_carousel_categories();
-    } else {
+    } else if (this.page === "details") {
       this.home = false;
-      console.log('details images');
+      // console.log('details images');
+      this.get_product_images();
     }
    
 
@@ -47,7 +48,7 @@ export class CarouselComponent implements OnInit {
   get_product_images(){
     this.CarouselService.getProduct_images(this.slug).subscribe(
       (data: any) => {
-        this.product_images = data;
+        this.product_images = data.product.product_images;
       }
     )
   }
