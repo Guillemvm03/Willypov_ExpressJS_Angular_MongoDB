@@ -49,6 +49,7 @@ export class CarouselComponent implements OnInit {
     this.CarouselService.getProduct_images(this.slug).subscribe(
       (data: any) => {
         this.product_images = data.product.product_images;
+        console.log(this.product_images);
       }
     )
   }
