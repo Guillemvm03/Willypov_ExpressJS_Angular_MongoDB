@@ -15,7 +15,6 @@ export class CarouselComponent implements OnInit {
   home : Boolean = false;
 
   listCarousel: Carousel[] = [];
-  product_images: Product_images[] =[];
 
   constructor(
     private CarouselService: CarouselService
@@ -48,7 +47,7 @@ export class CarouselComponent implements OnInit {
   get_product_images(){
     this.CarouselService.getProduct_images(this.slug).subscribe(
       (data: any) => {
-        this.product_images = data.product.product_images;
+        this.listCarousel = data.product.product_images;
       }
     )
   }

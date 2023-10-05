@@ -1,12 +1,8 @@
-<mdb-carousel [controls]="true" [indicators]="true" [animation]="'slide'" [interval]="0" [dark]="true">
-  <mdb-carousel-item *ngFor="let category of listCarousel">
-    <img src="../../../assets/img/{{category.image}}" [routerLink]="['/shop/categories/', category.slug]" class="d-block w-20" *ngIf="home">
-    <div class="carousel-caption d-none d-md-block">
-      <h5>{{category.slug}}</h5>
-    </div>
-  </mdb-carousel-item>
+<mdb-carousel [controls]="true" [indicators]="false" [animation]="'slide'" [interval]="0" [dark]="true" *ngIf="listCarousel.length">
+  <mdb-carousel-item *ngFor="let carousel of listCarousel">
+    <img src="../../../assets/img/{{carousel.image}}" [routerLink]="['/shop/categories/', carousel.slug]" class="d-block w-20 m-auto" *ngIf="home">
 
-  <mdb-carousel-item *ngFor="let product of product_images">
-    <img src="../../../assets/img/{{product}}" class="d-block w-20" *ngIf="!home">
+    
+    <img src="../../../assets/img/{{carousel}}" class="d-block w-20" *ngIf="!home">
   </mdb-carousel-item>
 </mdb-carousel>
