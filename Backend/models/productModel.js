@@ -24,6 +24,10 @@ const product_schema = mongoose.Schema({
             type: String,
             required: true
         },
+        // state: {
+        //     type: String,
+        //     requiered: true
+        // },
         location: String,
         product_images: [String],
 });
@@ -43,6 +47,7 @@ product_schema.methods.toProductResponse = async function () {
         price: this.price,
         description: this.description,
         id_category: this.id_category,
+        // state: this.state,
         product_images: this.product_images,
     }
 }
@@ -53,5 +58,9 @@ product_schema.methods.toProductCarouselResponse = async function () {
         product_images: this.product_images,
     }
 }
+
+
+
+
 
 module.exports = mongoose.model('Product', product_schema);

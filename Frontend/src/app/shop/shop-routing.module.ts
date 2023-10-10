@@ -15,12 +15,12 @@ const routes: Routes = [
       component: ShopComponent,
       resolve: {},
     }
-    // ,
-    // {
-    //   path: ':filters',
-    //   component: ShopComponent,
-    //   resolve: {},
-    // }
+    ,
+    {
+      path: ':filters',
+      component: ShopComponent,
+      resolve: {},
+    }
   ];
 
 @NgModule({
