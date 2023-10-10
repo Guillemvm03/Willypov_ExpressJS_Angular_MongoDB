@@ -1,4 +1,5 @@
-<mdb-carousel [controls]="true" [indicators]="false" [animation]="'slide'" [interval]="0" [dark]="true" *ngIf="listCarousel.length">
+
+<mdb-carousel [controls]="true" [indicators]="false" [animation]="'slide'" [interval]="4500" [dark]="true" *ngIf="listCarousel.length">
   <mdb-carousel-item *ngFor="let carousel of listCarousel">
     <img src="../../../assets/img/{{carousel.image}}" [routerLink]="['/shop/categories/', carousel.slug]" class="d-block w-20 m-auto" *ngIf="home">
 
@@ -6,3 +7,6 @@
     <img src="../../../assets/img/{{carousel}}" class="d-block w-20" *ngIf="!home">
   </mdb-carousel-item>
 </mdb-carousel>
+
+
+
