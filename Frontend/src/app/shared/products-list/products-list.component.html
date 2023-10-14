@@ -1,9 +1,6 @@
 <app-search (searchEvent)="get_list_filtered($event)" class="subheader"></app-search>
-
-
-<app-filters ></app-filters>
+<app-filters (filterEvent)="get_list_filtered($event)" [listCategories]="listCategories"></app-filters>
 <div *ngIf="listProducts" class="container_list_products">
     <div class="no_products" *ngIf="listProducts.length == 0">No products</div>
     <app-card-product class="item" *ngFor="let product of listProducts" [product]="product"></app-card-product>
 </div>
-<!-- <app-card-product *ngFor="let product of listProducts" [product]="product"></app-card-product> -->

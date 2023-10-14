@@ -1,4 +1,3 @@
-
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductService, Product, Filters, CategoryService, Category } from '../../core'
 import { ActivatedRoute } from '@angular/router';
@@ -13,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductsListComponent implements OnInit {
 
   listProducts: Product[] = [];
+  listCategories: Category[] = [];
   slug_Category: string | null = null;
   filters = new Filters();
   totalPages: Array<number> = [];
@@ -21,20 +21,22 @@ export class ProductsListComponent implements OnInit {
 
   constructor(
     private ProductService: ProductService,
-    // private CategoryService: CategoryService,
+    private CategoryService: CategoryService,
     private ActivatedRoute: ActivatedRoute
     
     ) { }
 
   ngOnInit(): void {
   this.slug_Category = this.ActivatedRoute.snapshot.paramMap.get('slug');
-  
+  this.getListForCategory();
 
-  if(this.slug_Category !== null) {
-    this.get_products();
-  }else{
-    this.get_all_products();
-  }
+    if(this.slug_Category !== null) {
+      this.get_products();
+    }else{
+      this.get_all_products();
+    }
+
+
   }
 
   get_products(): void {
@@ -63,6 +65,9 @@ export class ProductsListComponent implements OnInit {
 
   get_list_filtered(filters: Filters) {
     this.filters = filters;
+
+    console.log(this.filters);
+    
     this.ProductService.get_products(filters).subscribe({
       next: data => {
         this.listProducts = data.products;
@@ -71,7 +76,24 @@ export class ProductsListComponent implements OnInit {
       },
         error: e => console.error(e)
   });
+
   }
+
+
+  getListForCategory() {
+    this.CategoryService.all_categories().subscribe(
+      (data:any) => {
+        this.listCategories = data.categories;
+        console.log(this.listCategories);
+        
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+
 
 
 }

@@ -26,7 +26,7 @@
             <option *ngFor="let product of listProducts" [value]="product.name">{{product.name}}</option>
           </datalist>
          <div class="input-group-btn" >
-          <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span class="label-icon" >Category</span> <span class="caret" >&nbsp;</span></button>
+          <!-- <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><span class="label-icon" >Category</span> <span class="caret" >&nbsp;</span></button> -->
           <div class="dropdown-menu dropdown-menu-right" >
              <ul class="category_filters" >
               <li >
@@ -49,7 +49,7 @@
               </li>
              </ul>
           </div>
-          <button id="searchBtn" type="button" class="btn btn-secondary btn-search" ><span class="glyphicon glyphicon-search" >&nbsp;</span> <span class="label-icon" >Search</span></button>
+          <button id="searchBtn" type="button" class="btn btn-primary btn-search" ><span class="glyphicon glyphicon-search" >&nbsp;</span> <span class="label-icon" >Search</span></button>
          </div>
         </div>
        </div>
