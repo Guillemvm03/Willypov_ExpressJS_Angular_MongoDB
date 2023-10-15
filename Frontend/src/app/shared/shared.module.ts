@@ -13,6 +13,8 @@ import { CardProductComponent } from './card-product/card-product.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { SearchComponent } from './search/search.component';
 import { FiltersComponent } from './filters/filters.component';
+import { PaginationComponent } from './pagination/pagination.component';
+
 
 // import { FiltersComponent } from './filters/filters.component';
 // import { CarouselItemsComponent } from './carousel-items/carousel-items.component';
@@ -42,7 +44,8 @@ import { FiltersComponent } from './filters/filters.component';
         CardProductComponent,
         CarouselComponent,
         FiltersComponent,
-        SearchComponent
+        SearchComponent,
+        PaginationComponent,
 
         // CardCategoriesComponent
         // ProductDetailsComponent,
@@ -62,7 +65,8 @@ import { FiltersComponent } from './filters/filters.component';
         CardProductComponent,
         CarouselComponent,
         FiltersComponent,
-        SearchComponent
+        SearchComponent,
+        PaginationComponent
 
         // CardCategoriesComponent
         // ProductDetailsComponent,
