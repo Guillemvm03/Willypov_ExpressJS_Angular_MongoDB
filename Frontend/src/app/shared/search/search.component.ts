@@ -35,46 +35,35 @@ export class SearchComponent implements OnInit {
     
     if (this.routeFilters !== null) {
       this.filters = JSON.parse(atob(this.routeFilters));
-    }else{
-      console.log("a")
     }
 
-    
-    // this.search_value = this.filters.name || undefined;
+    this.search_value = this.filters.name || undefined;
 
   }
 
   public type_event(writtingValue: any): void {
-
     this.routeFilters = this.ActivatedRoute.snapshot.paramMap.get('filters');
     this.search = writtingValue;
     this.filters.name = writtingValue;
-    // this.checkTime(writtingValue);
 
-    
-   
-    setTimeout(() => {
-      
+      setTimeout(() => {
+
           this.searchEvent.emit(this.filters);
           this.Location.replaceState('/shop/' + btoa(JSON.stringify(this.filters)));
 
-        
-        
         if (this.search.length != 0){  
-          this.getList()
-        
-
+          this.getListProducts()
       }
     }, 150);
-  
-
+    this.filters.name = this.search;
+    this.filters.offset = 0;
   }
 
-  getList() {
+  getListProducts() {
     this.ProductService.find_product_name(this.search).subscribe(
       (data) => {
         this.listProducts = data.products;
-        console.log(this.listProducts);
+        // console.log(this.listProducts);
       },
       (error) => {
         console.log(error);
@@ -89,11 +78,9 @@ export class SearchComponent implements OnInit {
       this.filters.name = data.search_value;
       this.filters.offset = 0;
       this.Router.navigate(['/shop/' + btoa(JSON.stringify(this.filters))]);
+      // console.log(this.filters);
     }
   }
-
-
-
 
 
 
