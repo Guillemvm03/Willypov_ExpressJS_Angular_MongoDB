@@ -23,6 +23,7 @@ app.use(express.json());
 app.use('/api/categories', require('../routes/categoryRoutes.js'));
 app.use('/api/products', require('../routes/productRoutes.js'));
 app.use('/api/carousel', require('../routes/carouselRoutes.js'));
+app.use('/api', require('../routes/userRoutes'));
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
