@@ -14,6 +14,7 @@ const findAll_product = AsyncHandler(async (req, res) => {
     let offset = transUndefined(req.query.offset, 0);
     let category = transUndefined(req.query.category, "");
     let name = transUndefined(req.query.name, "");
+    let state = transUndefined(req.query.state, "");
     let price_min = transUndefined(req.query.price_min, 0);
     let price_max = transUndefined(req.query.price_max, Number.MAX_SAFE_INTEGER);
     let nameReg = new RegExp(name);
@@ -22,6 +23,10 @@ const findAll_product = AsyncHandler(async (req, res) => {
         name: { $regex: nameReg },
         $and: [{ price: { $gte: price_min } }, { price: { $lte: price_max } }],
     };
+
+    if (state != "") {
+        query.state = state;
+      }
 
     if (category != "") {
         query.id_category = category;
@@ -33,9 +38,6 @@ const findAll_product = AsyncHandler(async (req, res) => {
     if (!products) {
         res.status(404).json({ msg: "There was an error finding the products" });
     }
-
-    // return res.json({products: products.map(product => product), 
-    //     product_count: product_count});
 
     return res.status(200).json({
         products: await Promise.all(products.map(async product => {
@@ -93,7 +95,8 @@ const create_product = AsyncHandler(async (req, res) => {
         price: req.body.price,
         description: req.body.description,
         id_category: req.body.id_category,
-        location: req.body.location,
+        state: req.body.state,
+        // location: req.body.location,
         product_images: req.body.product_images
       };
 
