@@ -66,12 +66,9 @@ import { PaginationComponent } from './pagination/pagination.component';
         CarouselComponent,
         FiltersComponent,
         SearchComponent,
-        PaginationComponent
-
-        // CardCategoriesComponent
-        // ProductDetailsComponent,
-        // FormsModule,
-        // ReactiveFormsModule,
+        PaginationComponent,
+        FormsModule,
+        ReactiveFormsModule,
         // ShowAuthedDirective,
         // CommentsComponent,
         // ProfileProductsComponent,

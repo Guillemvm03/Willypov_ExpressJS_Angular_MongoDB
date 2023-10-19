@@ -1,5 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 // import { User, UserService } from '../../../core';
 
@@ -11,7 +10,6 @@ import { Router } from '@angular/router';
 
 export class HeaderComponent implements OnInit {
 
-  bars: Boolean = false;
 
   constructor(
   ) {}
