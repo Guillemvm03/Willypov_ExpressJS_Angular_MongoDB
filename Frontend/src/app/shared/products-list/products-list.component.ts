@@ -92,20 +92,20 @@ export class ProductsListComponent implements OnInit {
     }
   }
 
-  get_all_products() {
+  // get_all_products() {
 
-    this.ProductService.all_products().subscribe(
-      (data: any) => {
-        this.listProducts = data.products;
-        // console.log(this.listProducts);
+  //   this.ProductService.all_products().subscribe(
+  //     (data: any) => {
+  //       this.listProducts = data.products;
+  //       // console.log(this.listProducts);
 
-      });
-  }
+  //     });
+  // }
 
   get_list_filtered(filters: Filters) {
     this.filters = filters;
 
-    console.log(this.filters);
+    // console.log(this.filters);
     
     this.ProductService.get_products(filters).subscribe({
       next: data => {

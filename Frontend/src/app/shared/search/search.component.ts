@@ -78,7 +78,6 @@ export class SearchComponent implements OnInit {
       this.filters.name = data.search_value;
       this.filters.offset = 0;
       this.Router.navigate(['/shop/' + btoa(JSON.stringify(this.filters))]);
-      // console.log(this.filters);
     }
   }
 
