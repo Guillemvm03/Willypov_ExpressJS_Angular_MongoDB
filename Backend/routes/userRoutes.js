@@ -6,6 +6,6 @@ const verifyJWT = require('../middleware/verifyJWT');
 router.post('/users/login', user.userLogin);
 router.post('/users', user.registerUser);
 router.get('/user', verifyJWT, user.getCurrentUser);
-// router.put('/user', verifyJWT, user.updateUser);
+router.put('/user', verifyJWT, user.updateUser);
 
 module.exports = router;

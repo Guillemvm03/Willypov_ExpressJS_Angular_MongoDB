@@ -1,4 +1,4 @@
-<section class="h-100 gradient-form" style="background-color: #eee;">
+ <section class="h-100 gradient-form" style="background-color: #eee;">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-xl-10">
@@ -13,18 +13,36 @@
                     <h4 class="mt-1 mb-5 pb-1">Somos WillyPOV</h4>
                   </div>
   
-                  <form [formGroup]="authForm" (ngSubmit)="submitForm()">
-                    <fieldset [disabled]="isSubmitting">
-
+                  <form [formGroup]="settingsForm" (ngSubmit)="submitForm()">
+                    <fieldset>
+                
+                        <fieldset class="form-group">
+                            <input
+                              formControlName="image"
+                              placeholder="Image"
+                              class="form-control form-control-lg"
+                              type="text"
+                              />
+                        </fieldset>
+                
                       <fieldset class="form-group">
                         <input
                           formControlName="username"
                           placeholder="Username"
                           class="form-control form-control-lg"
                           type="text"
-                          [hidden]="!boton_login" />
+                          />
                       </fieldset>
-
+                
+                      <fieldset class="form-group">
+                        <input
+                          formControlName="bio"
+                          placeholder="Bio"
+                          class="form-control form-control-lg"
+                          type="text"
+                          />
+                      </fieldset>
+                
                       <fieldset class="form-group">
                         <input
                           formControlName="email"
@@ -32,7 +50,7 @@
                           class="form-control form-control-lg"
                           type="text" />
                       </fieldset>
-
+                
                       <fieldset class="form-group">
                         <input
                           formControlName="password"
@@ -40,11 +58,10 @@
                           class="form-control form-control-lg"
                           type="password" />
                       </fieldset>
-
+                
                       <div class="text-center pt-1 mb-5 pb-1">
-                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button" [hidden]="!boton_login" type="submit">Register</button>
-                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button" [hidden]="boton_login" type="submit">Log In</button>
-                        <a class="text-muted" href="#!">Forgot password?</a>
+                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button" type="submit">Update Data</button>
+                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button" (click)="logout()" >Log Out</button>
                       </div>
                     </fieldset>
                   </form>
@@ -58,12 +75,3 @@
       </div>
     </div>
   </section>
-
-
-
-
-
-
-
-
-
