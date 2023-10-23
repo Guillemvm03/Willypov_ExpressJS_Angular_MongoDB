@@ -100,7 +100,7 @@ const userLogin = asyncHandler(async (req, res) => {
 // @access Private
 // @return User
 const updateUser = asyncHandler(async (req, res) => {
-    const { user } = req.body;
+    const  user  = req.body;
 
     // confirm data
     if (!user) {
@@ -138,6 +138,6 @@ const updateUser = asyncHandler(async (req, res) => {
 module.exports = {
     registerUser,
     getCurrentUser,
-    userLogin
-    // updateUser
+    userLogin,
+    updateUser
 }

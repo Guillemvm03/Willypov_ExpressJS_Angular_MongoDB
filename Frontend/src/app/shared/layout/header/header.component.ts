@@ -1,7 +1,6 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
-// import { User, UserService } from '../../../core';
+import { User, UserService } from '../../../core';
 
 @Component({
   selector: 'app-header',
@@ -11,15 +10,35 @@ import { Router } from '@angular/router';
 
 export class HeaderComponent implements OnInit {
 
-  bars: Boolean = false;
 
   constructor(
+    private userService: UserService,
+    private cd: ChangeDetectorRef
   ) {}
+
+  currentUser!: User;
+  isAuthenticated!: boolean;
 
   ngOnInit() {
 
+    this.userService.currentUser.subscribe(
+      (userData) => {
+        this.currentUser = userData;
+        console.log(this.currentUser);
+        this.cd.markForCheck();
+        // this.isAuthenticated = true;
+      }
+    );
+
+    this.userService.isAuthenticated.subscribe(
+      (userData:any) => {
+        this.isAuthenticated = userData;
+        console.log(this.isAuthenticated)
+
+
+
+      }
+    );
   }
 
-  
-
-}
+  }

@@ -68,10 +68,8 @@ import { PaginationComponent } from './pagination/pagination.component';
         SearchComponent,
         PaginationComponent,
         FormsModule,
-        ReactiveFormsModule
-
-        // CardCategoriesComponent
-        // ProductDetailsComponent,
+        ReactiveFormsModule,
+        // ShowAuthedDirective,
         // CommentsComponent,
         // ProfileProductsComponent,
         // ProfileFavoritesComponent,
