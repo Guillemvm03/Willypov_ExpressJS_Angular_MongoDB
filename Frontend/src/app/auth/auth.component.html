@@ -1,4 +1,5 @@
 <section class="h-100 gradient-form" style="background-color: #eee;">
+
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-xl-10">
@@ -12,7 +13,7 @@
                       style="width: 185px;" alt="logo">
                     <h4 class="mt-1 mb-5 pb-1">Somos WillyPOV</h4>
                   </div>
-  
+                  <app-list-errors [errors]="errors"></app-list-errors>
                   <form [formGroup]="authForm" (ngSubmit)="submitForm()">
                     <fieldset [disabled]="isSubmitting">
 
@@ -22,8 +23,7 @@
                           placeholder="Username"
                           class="form-control form-control-lg"
                           type="text"
-                          [hidden]="!boton_login"/>
-                          <!-- *ngIf="authType === 'register'"/> -->
+                          [hidden]="!boton_login" />
                       </fieldset>
 
                       <fieldset class="form-group">
@@ -34,6 +34,16 @@
                           type="text" />
                       </fieldset>
 
+                      <!-- <fieldset class="form-group">
+                        <input
+                          formControlName="bio"
+                          placeholder="Biography"
+                          class="form-control form-control-lg"
+                          type="text"
+                          [hidden]="!boton_login" />
+                      </fieldset> -->
+
+
                       <fieldset class="form-group">
                         <input
                           formControlName="password"
@@ -43,8 +53,8 @@
                       </fieldset>
 
                       <div class="text-center pt-1 mb-5 pb-1">
-                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" [hidden]="!boton_login">Register</button>
-                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit" [hidden]="boton_login">Log In</button>
+                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button" [hidden]="!boton_login" type="submit">Register</button>
+                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="button" [hidden]="boton_login" type="submit">Log In</button>
                         <a class="text-muted" href="#!">Forgot password?</a>
                       </div>
                     </fieldset>
@@ -58,7 +68,13 @@
         </div>
       </div>
     </div>
+
   </section>
+
+
+
+
+
 
 
 

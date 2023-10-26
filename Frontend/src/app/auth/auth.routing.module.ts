@@ -6,13 +6,13 @@ import { AuthComponent } from './auth.component';
 const routes: Routes = [
     { 
       path: 'login',
-      component: AuthComponent,
-      canActivate: [NoAuthGuard] 
+      component: AuthComponent ,
+      canActivate: [NoAuthGuard]
     },
     { 
       path: 'register',
       component: AuthComponent,
-      canActivate: [NoAuthGuard] 
+      canActivate: [NoAuthGuard]
     }
 ];
 

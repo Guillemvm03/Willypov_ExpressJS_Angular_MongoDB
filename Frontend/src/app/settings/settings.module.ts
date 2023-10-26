@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
-import { AuthGuard } from '../core/guards/auth-guard.service';
 import { SettingsComponent } from './settings.component';
+import { SettingsRoutingModule } from './settings.routing.module';
 import { SharedModule } from '../shared';
-import { SettingsRoutingModule } from './settings-routing.module';
+import { AuthGuard } from '../core/guards/auth-guard.service';
+
+
+
 
 @NgModule({
   imports: [
@@ -16,4 +19,4 @@ import { SettingsRoutingModule } from './settings-routing.module';
     AuthGuard
   ]
 })
-export class SettingsModule {}
+export class SettingsModule { }

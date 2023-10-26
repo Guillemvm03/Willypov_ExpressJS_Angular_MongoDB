@@ -77,7 +77,7 @@ export class FiltersComponent implements OnInit {
     this.filters.price_min = undefined;
     this.filters.price_max = undefined;
     
-  
+    this.Location.replaceState('/shop/');
     // console.log(this.filters);
 
     window.location.reload()

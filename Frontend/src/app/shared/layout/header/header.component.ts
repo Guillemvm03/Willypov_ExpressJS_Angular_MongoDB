@@ -10,35 +10,32 @@ import { User, UserService } from '../../../core';
 
 export class HeaderComponent implements OnInit {
 
+  currentUser!: User;
+
+  UserActive: boolean = false;
+
+
 
   constructor(
-    private userService: UserService,
-    private cd: ChangeDetectorRef
+    private UserService: UserService
   ) {}
 
-  currentUser!: User;
-  isAuthenticated!: boolean;
+
 
   ngOnInit() {
 
-    this.userService.currentUser.subscribe(
+    this.UserService.isAuthenticated.subscribe(
+      (isAuthenticated) => {
+        this.UserActive = isAuthenticated;
+      }
+    );
+
+    this.UserService.currentUser.subscribe(
       (userData) => {
         this.currentUser = userData;
-        console.log(this.currentUser);
-        this.cd.markForCheck();
-        // this.isAuthenticated = true;
-      }
-    );
-
-    this.userService.isAuthenticated.subscribe(
-      (userData:any) => {
-        this.isAuthenticated = userData;
-        console.log(this.isAuthenticated)
-
-
 
       }
     );
   }
-
-  }
+  
+}

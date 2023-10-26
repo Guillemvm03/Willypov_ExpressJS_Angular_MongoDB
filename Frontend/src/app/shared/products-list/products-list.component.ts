@@ -59,7 +59,6 @@ export class ProductsListComponent implements OnInit {
       this.get_list_filtered(this.filters);
     }
 
-
   }
 
 
@@ -76,31 +75,20 @@ export class ProductsListComponent implements OnInit {
   get_products(): void {
 
     const params = this.getRequestParams(this.offset, this.limit);
-    console.log(params);
+    // console.log(params);
     if (this.slug_Category !== null) {
       this.ProductService.get_products_from_category(this.slug_Category, params).subscribe({
         next: data => {
-          if (this.slug_Category) {
-            this.filters.category = this.slug_Category;
-          }
+          // if (this.slug_Category) {
+          //   this.filters.category = this.slug_Category;
+          // }
           this.listProducts = data.products;
-          console.log(this.listProducts);
           this.totalPages = Array.from(new Array(Math.ceil(data.product_count/this.limit)), (val, index) => index + 1);
         },
         error: e => console.error(e)
       });
     }
   }
-
-  // get_all_products() {
-
-  //   this.ProductService.all_products().subscribe(
-  //     (data: any) => {
-  //       this.listProducts = data.products;
-  //       // console.log(this.listProducts);
-
-  //     });
-  // }
 
   get_list_filtered(filters: Filters) {
     this.filters = filters;

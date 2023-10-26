@@ -12,22 +12,21 @@ import { Errors, UserService } from '../core';
 export class AuthComponent implements OnInit {
 
   boton_login: boolean = false;
-  authType: String = '';
   errors: Errors = {errors: {}};
-  ruta_boton!: string | null;
-
+  // errors!: String;
   isSubmitting = false;
+  authType: String = '';
+  ruta_boton!: string | null;
   authForm: FormGroup;
 
   constructor(
+    private cd: ChangeDetectorRef,
     private ActivateRoute: ActivatedRoute,
     private fb: FormBuilder,
     private router: Router,
     private userService: UserService,
-    private cd: ChangeDetectorRef
   ) {
     this.authForm = this.fb.group({
-      'username': [''],
       'email': ['', Validators.required],
       'password': ['', Validators.required]
     });
@@ -36,58 +35,40 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {
     this.ruta_boton = this.ActivateRoute.snapshot.url[0].path;
 
-    if(this.ruta_boton == 'register'){
+    if(this.ruta_boton === 'register'){
       this.boton_login = true;
       this.authType = 'register';
+      this.authForm.addControl('username', new FormControl('', Validators.required));
     }else{
       this.boton_login = false;
       this.authType = 'login';
-      
     }
-    // console.log(this.ruta_boton);
+console.log(this.errors);
   }
 
   submitForm() {
     this.isSubmitting = true;
     this.errors = {errors: {}};
-
+    // this.errors = ''
     const credentials = this.authForm.value;
-    // console.log(credentials);
     this.userService.attemptAuth(this.authType, credentials).subscribe(
-      data => this.router.navigateByUrl('/home'),
-      err => {
-        this.errors = err;
+      (data:any) => this.router.navigateByUrl('/'),
+      (err:any) => {
         this.isSubmitting = false;
+        this.errors = err;
+        // console.log(this.errors);
         this.cd.markForCheck();
+
+        // const errorResponse = new HttpErrorResponse({
+        //   error: 'Internal Server Error',
+        //   status: 500,
+        //   statusText: 'Server Error'
+        // });
+        
+        // throw errorResponse;
       }
     );
   }
-
-
-//   submitForm() {
-//     this.isSubmitting = true;
-//     const credentials = this.authForm.value;
-
-//         this.userService.attemptAuth(this.authType, credentials).subscribe(
-//         (data:any) => {
-//             if(this.authType === 'login'){
-//                 this.router.navigateByUrl('/');
-//             } else if(this.authType === 'register'){
-//                 this.router.navigateByUrl('/login');
-//             }
-//         },
-//         (err:any) => {
-//           const errorResponse = new HttpErrorResponse({
-//             error: 'Internal Server Error',
-//             status: 500,
-//             statusText: 'Server Error'
-//           });
-          
-//           throw errorResponse;
-//         }
-//         );
-    
-// }
 
 
 }

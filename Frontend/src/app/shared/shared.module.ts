@@ -14,7 +14,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { SearchComponent } from './search/search.component';
 import { FiltersComponent } from './filters/filters.component';
 import { PaginationComponent } from './pagination/pagination.component';
-
+import { ListErrorsComponent } from './list-errors/list-errors.component';
 
 // import { FiltersComponent } from './filters/filters.component';
 // import { CarouselItemsComponent } from './carousel-items/carousel-items.component';
@@ -46,6 +46,7 @@ import { PaginationComponent } from './pagination/pagination.component';
         FiltersComponent,
         SearchComponent,
         PaginationComponent,
+        ListErrorsComponent,
 
         // CardCategoriesComponent
         // ProductDetailsComponent,
@@ -69,6 +70,8 @@ import { PaginationComponent } from './pagination/pagination.component';
         PaginationComponent,
         FormsModule,
         ReactiveFormsModule,
+        ListErrorsComponent,
+        
         // ShowAuthedDirective,
         // CommentsComponent,
         // ProfileProductsComponent,
