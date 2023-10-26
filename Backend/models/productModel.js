@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const User = require('./userModel');
 const slugify = require('slugify');
 const uniqueValidator = require('mongoose-unique-validator');
 
@@ -30,6 +31,14 @@ const product_schema = mongoose.Schema({
         },
         location: String,
         product_images: [String],
+        likesCount: {
+            type: Number,
+            default: 0
+        },
+        author: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        },
 });
 
 
@@ -40,7 +49,7 @@ product_schema.pre('save', function(next){
     next();
 });
 
-product_schema.methods.toProductResponse = async function () {
+product_schema.methods.toProductResponse = async function (user) {
     return {
         slug: this.slug,
         name: this.name,
@@ -49,6 +58,9 @@ product_schema.methods.toProductResponse = async function () {
         id_category: this.id_category,
         state: this.state,
         product_images: this.product_images,
+        liked: user ? user.isLiking(this._id) : false,
+        likesCount: this.likesCount,
+        // author:  authorObj.toProfileJSON(user)
     }
 }
 
@@ -57,6 +69,17 @@ product_schema.methods.toProductCarouselResponse = async function () {
         slug: this.slug,
         product_images: this.product_images,
     }
+}
+
+
+product_schema.methods.updateLikesCount = async function () {
+    const likesCount = await User.count({
+        likedProducts: {$in: [this._id]}
+    });
+
+    this.likesCount = likesCount;
+
+    return this.save();
 }
 
 
