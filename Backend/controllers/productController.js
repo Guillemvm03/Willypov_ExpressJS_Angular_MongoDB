@@ -133,8 +133,8 @@ const create_product = AsyncHandler(async (req, res) => {
         description: req.body.description,
         id_category: req.body.id_category,
         state: req.body.state,
-        // location: req.body.location,
-        product_images: req.body.product_images
+        location: req.body.location,
+        product_images: req.body.product_images,
       };
 
       const id_cat = req.body.id_category;
@@ -153,13 +153,15 @@ const create_product = AsyncHandler(async (req, res) => {
               message: "User Not Found"
           });
       }
-    //   res.json(category)
+    //   res.json(loginUser);
 
       if (!category) {
         res.status(400).json({message: "Ha ocurrido un error buscar la categoria a la que pertenece el producto"});
     }
 
       const product = new Product(product_data);
+      product.author = loginUser._id;
+
       await product.save();
 
       if (!product) {
