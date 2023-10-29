@@ -16,10 +16,10 @@
 
 
 
-<div [hidden]="this.product.likesCount">
+<div [hidden]="product.liked">
 <a class="btn-link" (click)="toggleFavorite()"><i class="bi bi-heart fs-4 text-danger"></i></a>
 </div>
 
-<div [hidden]="!this.product.likesCount">
+<div [hidden]="!product.liked">
   <a class="btn-link" (click)="toggleFavorite()"><i class="bi bi-heart-fill fs-4 text-danger"></i></a>
   </div>
