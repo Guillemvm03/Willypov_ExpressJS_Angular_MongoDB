@@ -1,5 +1,6 @@
 const Product = require("../models/productModel.js");
 const Category = require("../models/categoryModel.js");
+const User = require("../models/userModel.js");
 const AsyncHandler = require("express-async-handler");
 
 
@@ -39,12 +40,21 @@ const findAll_product = AsyncHandler(async (req, res) => {
         res.status(404).json({ msg: "There was an error finding the products" });
     }
 
-    return res.status(200).json({
-        products: await Promise.all(products.map(async product => {
-            return await product.toProductResponse();
-        })), product_count: product_count
-    });
 
+    if(req.loggedin){
+        const loginUser = await User.findById(req.userId).exec();
+        return res.status(200).json({
+            products: await Promise.all(products.map(async product => {
+                return await product.toProductResponse(loginUser);
+            })), product_count: product_count
+        });
+    }else{
+        return res.status(200).json({
+            products: await Promise.all(products.map(async product => {
+                return await product.toProductResponse(false);
+            })), product_count: product_count
+        });
+    }
     
 
 })
@@ -60,9 +70,17 @@ const findOne_product = AsyncHandler(async (req, res) => {
         res.status(400).json({message: "Producto no encontrado"});
     }
 
-    return res.status(200).json({
-       product: await product.toProductResponse()
-    });
+    if(req.loggedin){
+        const loginUser = await User.findById(req.userId).exec();
+        return res.status(200).json({
+            product: await product.toProductResponse(loginUser)
+        });
+    }else{
+        return res.status(200).json({
+            product: await product.toProductResponse(false)
+        });
+    }
+
 
 })
 
@@ -77,12 +95,31 @@ const CategoriesFromProduct = AsyncHandler(async (req, res) => {
         res.status(400).json({message: "Categoria no encontrada"});
     }
 
-    return await res.status(200).json({
-        products: await Promise.all(category.products.map(async productId => {
-            const productObj = await Product.findById(productId).exec();
-            return await productObj.toProductResponse();
-        }))
-    })
+    const id = req.userId;
+
+    const loginUser = await User.findById(id).exec();
+
+    if (!loginUser) {
+        return res.status(401).json({
+            message: "User Not Found"
+        });
+    }
+
+    if(req.loggedin){
+        return await res.status(200).json({
+            products: await Promise.all(category.products.map(async productId => {
+                const productObj = await Product.findById(productId).exec();
+                return await productObj.toProductResponse(loginUser);
+            }))
+        })
+    }else{
+        return await res.status(200).json({
+            products: await Promise.all(category.products.map(async productId => {
+                const productObj = await Product.findById(productId).exec();
+                return await productObj.toProductResponse(false);
+            }))
+        })
+    }
     
 })
 
@@ -106,6 +143,16 @@ const create_product = AsyncHandler(async (req, res) => {
 
       const category = await Category.findOne({id_cat}).exec();
 
+
+      const id = req.userId;
+
+      const loginUser = await User.findById(id).exec();
+
+      if (!loginUser) {
+          return res.status(401).json({
+              message: "User Not Found"
+          });
+      }
     //   res.json(category)
 
       if (!category) {
@@ -122,7 +169,7 @@ const create_product = AsyncHandler(async (req, res) => {
     await category.addProduct(product._id);
 
       return res.status(200).json({
-        product: await product.toProductResponse()
+        product: await product.toProductResponse(loginUser)
     })
    
 
@@ -164,6 +211,73 @@ const update_product = AsyncHandler(async (req, res) => {
 
 })
 
+
+
+const likeProduct = AsyncHandler(async (req, res) => {
+    const id = req.userId;
+
+    const slug = req.params.id;
+
+    const loginUser = await User.findById(id).exec();
+
+    if (!loginUser) {
+        return res.status(401).json({
+            message: "User Not Found"
+        });
+    }
+
+    const product = await Product.findOne({ slug }).exec();
+
+    if (!product) {
+        return res.status(401).json({
+            message: "Article Not Found"
+        });
+    }
+    // console.log(`product info ${product}`);
+    // res.json(product._id)
+
+    await loginUser.likes(product._id);
+
+    const updatedProduct = await product.updateLikesCount();
+
+    return res.status(200).json({
+        product: await updatedProduct.toProductResponse(loginUser)
+    });
+});
+
+
+
+const dislikeProduct = AsyncHandler(async (req, res) => {
+    const id = req.userId;
+
+    const slug = req.params.id;
+
+    const loginUser = await User.findById(id).exec();
+
+    if (!loginUser) {
+        return res.status(401).json({
+            message: "User Not Found"
+        });
+    }
+
+    const product = await Product.findOne({ slug }).exec();
+
+    if (!product) {
+        return res.status(401).json({
+            message: "Article Not Found"
+        });
+    }
+    // console.log(`product info ${product}`);
+
+    await loginUser.dislikes(product._id);
+
+    const updatedProduct = await product.updateLikesCount();
+
+    return res.status(200).json({
+        product: await updatedProduct.toProductResponse(loginUser)
+    });
+});
+
 // const find_product_name = AsyncHandler(async (req, res) => {
 //     let search = new RegExp(req.params.search);
 
@@ -186,5 +300,7 @@ module.exports = {
     delete_product,
     deleteAll_products,
     update_product,
-    CategoriesFromProduct
+    CategoriesFromProduct,
+    likeProduct,
+    dislikeProduct
 }

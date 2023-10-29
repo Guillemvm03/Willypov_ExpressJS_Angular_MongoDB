@@ -29,10 +29,10 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: "https://static.productionready.io/images/smiley-cyrus.jpg"
     },
-    // favouriteArticles: [{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Article'
-    // }],
+    likedProducts: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Article'
+    }],
     // followingUsers: [{
     //     type: mongoose.Schema.Types.ObjectId,
     //     ref: 'User'
@@ -103,42 +103,32 @@ userSchema.methods.toProfileJSON = function (user) {
 //     return this.save();
 // };
 
-// userSchema.methods.isFavourite = function (id) {
-//     const idStr = id.toString();
-//     for (const article of this.favouriteArticles) {
-//         if (article.toString() === idStr) {
-//             return true;
-//         }
-//     }
-//     return false;
-// }
+userSchema.methods.isLiking = function (id) {
+    const idStr = id.toString();
+    for (const article of this.likedProducts) {
+        if (article.toString() === idStr) {
+            return true;
+        }
+    }
+    return false;
+}
 
-// userSchema.methods.favorite = function (id) {
-//     if(this.favouriteArticles.indexOf(id) === -1){
-//         this.favouriteArticles.push(id);
-//     }
+userSchema.methods.likes = function (id) {
+    if(this.likedProducts.indexOf(id) === -1){
+        this.likedProducts.push(id);
+    }
 
-//     // const article = await Article.findById(id).exec();
-//     //
-//     // article.favouritesCount += 1;
-//     //
-//     // await article.save();
 
-//     return this.save();
-// }
+    return this.save();
+}
 
-// userSchema.methods.unfavorite = function (id) {
-//     if(this.favouriteArticles.indexOf(id) !== -1){
-//         this.favouriteArticles.remove(id);
-//     }
+userSchema.methods.dislikes = function (id) {
+    if(this.likedProducts.indexOf(id) !== -1){
+        this.likedProducts.remove(id);
+    }
 
-//     // const article = await Article.findById(id).exec();
-//     //
-//     // article.favouritesCount -= 1;
-//     //
-//     // await article.save();
 
-//     return this.save();
-// };
+    return this.save();
+};
 
 module.exports = mongoose.model('User', userSchema);

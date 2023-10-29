@@ -8,7 +8,7 @@ export * from './card-product/card-product.component';
 export * from './products-list/products-list.component';
 export * from './carousel/carousel.component';
 export * from './list-errors/list-errors.component';
-
+export * from './buttons/favorite-button.component';
 
 
 

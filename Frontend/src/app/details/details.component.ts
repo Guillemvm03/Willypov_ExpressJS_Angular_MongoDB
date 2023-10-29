@@ -31,7 +31,7 @@ export class DetailsComponent implements OnInit {
            this.ProductService.get_product(this.slug).subscribe({
                 next: (data: any) => {
                     this.product = data.product;
-
+                    
                     // this.images = data.product_images!;
                     console.log(this.product);
                 },

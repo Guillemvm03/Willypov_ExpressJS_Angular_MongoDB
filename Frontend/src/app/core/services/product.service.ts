@@ -62,12 +62,12 @@ export class ProductService {
     return this.http.delete<Product[]>(`${URL}`);
   }
 
-  favorite(id: String): Observable<any> {
-    return this.http.post(`${URL}/${id}/favorite`, {})
+  like(id: String): Observable<any> {
+    return this.http.post(`${URL}/${id}/like`, {})
   }
 
-  unfavorite(id: String): Observable<any> {
-    return this.http.delete(`${URL}/${id}/favorite`)
+  dislike(id: String): Observable<any> {
+    return this.http.delete(`${URL}/${id}/like`)
   }
 
   fav_products_user(): Observable<Product[]> {    

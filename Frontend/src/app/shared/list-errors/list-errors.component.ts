@@ -25,7 +25,7 @@ export class ListErrorsComponent {
   set errors(errorList: any) {
     // console.log(Object.keys(errorList.error || {}));
     // errorList=errorList.error.message
-    this.formattedErrors = errorList.error.message;
+    this.formattedErrors = errorList.errors;
     // Object.keys(errorList.errors || {})
     //   .map(key => `${key} ${errorList.errors[key]}`);
       console.log(this.formattedErrors)

@@ -43,7 +43,7 @@ export class AuthComponent implements OnInit {
       this.boton_login = false;
       this.authType = 'login';
     }
-console.log(this.errors);
+
   }
 
   submitForm() {
@@ -56,7 +56,7 @@ console.log(this.errors);
       (err:any) => {
         this.isSubmitting = false;
         this.errors = err;
-        // console.log(this.errors);
+        console.log(this.errors);
         this.cd.markForCheck();
 
         // const errorResponse = new HttpErrorResponse({

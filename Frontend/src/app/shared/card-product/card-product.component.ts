@@ -23,6 +23,19 @@ export class CardProductComponent implements OnInit {
     if(typeof this.product.product_images !== "undefined"){
       this.images = this.product.product_images[0];
     }
+
+    
   }
+
+  onToggleFavorite(favorited: boolean) {
+    this.product.liked = favorited;
+
+    if (favorited) {
+      this.product.likesCount++;
+    } else {
+      this.product.likesCount--;
+    }
+  }
+
 
 }

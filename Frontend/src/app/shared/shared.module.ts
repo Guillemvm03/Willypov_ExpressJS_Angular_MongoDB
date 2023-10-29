@@ -15,6 +15,7 @@ import { SearchComponent } from './search/search.component';
 import { FiltersComponent } from './filters/filters.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { ListErrorsComponent } from './list-errors/list-errors.component';
+import { FavoriteButtonComponent } from './buttons';
 
 // import { FiltersComponent } from './filters/filters.component';
 // import { CarouselItemsComponent } from './carousel-items/carousel-items.component';
@@ -36,7 +37,8 @@ import { ListErrorsComponent } from './list-errors/list-errors.component';
         InfiniteScrollModule,
         MdbCarouselModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        
     ],
     declarations: [
         CategoriesListComponent,
@@ -47,6 +49,7 @@ import { ListErrorsComponent } from './list-errors/list-errors.component';
         SearchComponent,
         PaginationComponent,
         ListErrorsComponent,
+        FavoriteButtonComponent
 
         // CardCategoriesComponent
         // ProductDetailsComponent,
@@ -71,6 +74,7 @@ import { ListErrorsComponent } from './list-errors/list-errors.component';
         FormsModule,
         ReactiveFormsModule,
         ListErrorsComponent,
+        FavoriteButtonComponent
         
         // ShowAuthedDirective,
         // CommentsComponent,

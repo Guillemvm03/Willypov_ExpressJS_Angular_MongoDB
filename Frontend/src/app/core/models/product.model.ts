@@ -6,6 +6,8 @@ export interface Product {
   price: number;
   description: string;
   id_category: string;
-  // state: string;
+  state: string;
   product_images: [string];
+  likesCount: number;
+  liked: boolean;
 }
