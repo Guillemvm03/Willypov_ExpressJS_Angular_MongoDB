@@ -36,7 +36,12 @@ const userSchema = new mongoose.Schema({
     followingUsers: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
+    }],
+    followedByUsers: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }]
+
 },
     {
         timestamps: true
@@ -75,7 +80,11 @@ userSchema.methods.toProfileJSON = function (user) {
         username: this.username,
         bio: this.bio,
         image: this.image,
-        following: user ? user.isFollowing(this._id) : false
+        following: user ? user.isFollowing(this._id) : false,
+        followedBy: user ? user.isFollowed(this._id) : false,
+        likedProducts: this.likedProducts,
+        followingUsers: this.followingUsers,
+        followedByUsers: this.followedByUsers
     }
 };
 
@@ -102,6 +111,33 @@ userSchema.methods.unfollow = function (id) {
     }
     return this.save();
 };
+
+
+
+userSchema.methods.isFollowed = function (id) {
+    const idStr = id.toString();
+    for (const followedByUser of this.followedByUsers) {
+        if (followedByUser.toString() === idStr) {
+            return true;
+        }
+    }
+    return false;
+};
+
+userSchema.methods.followed = function (id) {
+    if(this.followedByUsers.indexOf(id) === -1){
+        this.followedByUsers.push(id);
+    }
+    return this.save();
+};
+
+userSchema.methods.unfollowed = function (id) {
+    if(this.followedByUsers.indexOf(id) !== -1){
+        this.followedByUsers.remove(id);
+    }
+    return this.save();
+};
+
 
 userSchema.methods.isLiking = function (id) {
     const idStr = id.toString();

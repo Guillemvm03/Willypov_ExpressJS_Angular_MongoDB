@@ -14,6 +14,8 @@ router.get('/category/:id', verifyJWTOptional, products.CategoriesFromProduct);
 
 router.get('/:id', verifyJWTOptional, products.findOne_product);
 
+
+
 router.put('/:id', verifyJWT, products.update_product);
 
 router.delete('/:id', products.delete_product);

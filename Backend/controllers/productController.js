@@ -95,15 +95,6 @@ const CategoriesFromProduct = AsyncHandler(async (req, res) => {
         res.status(400).json({message: "Categoria no encontrada"});
     }
 
-    const id = req.userId;
-
-    const loginUser = await User.findById(id).exec();
-
-    if (!loginUser) {
-        return res.status(401).json({
-            message: "User Not Found"
-        });
-    }
 
     if(req.loggedin){
         return await res.status(200).json({

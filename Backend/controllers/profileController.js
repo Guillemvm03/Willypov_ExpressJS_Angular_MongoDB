@@ -40,6 +40,7 @@ const followUser = AsyncHandler(async (req, res) => {
         })
     }
     await loginUser.follow(user._id);
+    await user.followed(loginUser._id);
 
     return res.status(200).json({
         profile: user.toProfileJSON(loginUser)
@@ -60,6 +61,8 @@ const unFollowUser = AsyncHandler(async (req, res) => {
         })
     }
     await loginUser.unfollow(user._id);
+    await user.unfollowed(loginUser._id);
+
 
     return res.status(200).json({
         profile: user.toProfileJSON(loginUser)
