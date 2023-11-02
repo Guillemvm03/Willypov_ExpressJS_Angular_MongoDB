@@ -1,0 +1,85 @@
+[
+    {
+        "name": "Iphone 12",
+        "price": 500,
+        "description": "Iphone 12 pro negro mate",
+        "id_category": "moviles-kae5u6",
+        "location": "Valencia",
+        "product_images": ["Iphone12.jpg", "Iphone12_2.jpg", "Iphone12_3.jpg"]
+    },
+    {
+        "name": "Iphone 13",
+        "price": 900,
+        "description": "Iphone 13 rojo",
+        "id_category": "moviles-kae5u6",
+        "location": "Barcelona",
+        "product_images": ["Iphone13.jpg", "Iphone13_2.jpg", "Iphone13_3.jpg"]
+    },
+    {
+        "name": "Pantalón vaquero",
+        "price": 25,
+        "description": "Pantalón vaquero azul marino",
+        "id_category": "ropa-mgymvj",
+        "location": "Ontinyent",
+        "product_images": ["Vaquero.jpg", "Vaquero_2.jpg", "Vaquero_3.jpg"]
+    },
+    {
+        "name": "Sudadera roja",
+        "price": 35,
+        "description": "Sudadera roja de la marca nike",
+        "id_category": "ropa-mgymvj",
+        "location": "Ontinyent",
+        "product_images": ["Sudadera_roja.jpg", "Sudadera_roja_2.jpg", "Sudadera_roja_3.jpg"]
+    },
+    {
+        "name": "Chaqueta de cuero",
+        "price": 35,
+        "description": "Chaqueta de cuero bonita",
+        "id_category": "ropa-mgymvj",
+        "location": "Ontinyent",
+        "product_images": ["Chaqueta_cuero.jpg", "Chaqueta_cuero_2.jpg", "Chaqueta_cuero_3.jpg"]
+    },
+    {
+        "name": "Camisa blanca",
+        "price": 35,
+        "description": "Camisa blanca de tommy hilfiger",
+        "id_category": "ropa-mgymvj",
+        "location": "Ontinyent",
+        "product_images": ["Camisa_blanca.jpg", "Camisa_blanca_2.jpg", "Camisa_blanca_3.jpg"]
+    },
+    {
+        "name": "Sudadera azul",
+        "price": 45,
+        "description": "Sudadera azul de la marca puma",
+        "id_category": "ropa-mgymvj",
+        "location": "Ontinyent",
+        "product_images": ["Sudadera_azul.jpg", "Sudadera_azul_2.jpg", "Sudadera_azul_3.jpg"]
+    },
+    {
+        "name": "Camiseta Willypov",
+        "price": 2000,
+        "description": "Camiseta original Willypov",
+        "id_category": "ropa-mgymvj",
+        "location": "Aielo de Malferit",
+        "product_images": ["camisetawilly_1.jpg", "camisetawilly_2.jpg", "camisetawilly_3.jpg"]
+    },
+
+    {
+        "id_cat": "moviles-kae5u6",
+        "category_name" : "Móviles",
+        "image" : "Moviles.png"
+    },
+
+    {
+        "id_cat": "ropa-mgymvj",
+        "category_name" : "Ropa",
+        "image" : "Ropa.png"
+    },
+
+
+    {
+        "id_cat": "Electrodomesticos-pspsps",
+        "category_name" : "Electrodomesticos",
+        "image" : "Electrodomésticos.png"
+    }
+]

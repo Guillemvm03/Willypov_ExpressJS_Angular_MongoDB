@@ -35,10 +35,14 @@ const product_schema = mongoose.Schema({
             type: Number,
             default: 0
         },
-        // author: {
-        //     type: mongoose.Schema.Types.ObjectId,
-        //     ref: 'User'
-        // },
+        author: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        comments: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comment'
+        }]
 });
 
 
@@ -50,6 +54,7 @@ product_schema.pre('save', function(next){
 });
 
 product_schema.methods.toProductResponse = async function (user) {
+    const authorObj = await User.findById(this.author).exec();
     return {
         slug: this.slug,
         name: this.name,
@@ -60,7 +65,7 @@ product_schema.methods.toProductResponse = async function (user) {
         product_images: this.product_images,
         liked: user ? user.isLiking(this._id) : false,
         likesCount: this.likesCount,
-        // author:  authorObj.toProfileJSON(user)
+        author:  authorObj.toProfileJSON(user)
     }
 }
 
@@ -81,6 +86,21 @@ product_schema.methods.updateLikesCount = async function () {
 
     return this.save();
 }
+
+
+product_schema.methods.addComment = function (commentId) {
+    if(this.comments.indexOf(commentId) === -1){
+        this.comments.push(commentId);
+    }
+    return this.save();
+};
+
+product_schema.methods.removeComment = function (commentId) {
+    if(this.comments.indexOf(commentId) !== -1){
+        this.comments.remove(commentId);
+    }
+    return this.save();
+};
 
 
 

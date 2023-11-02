@@ -16,19 +16,14 @@ import { FiltersComponent } from './filters/filters.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { ListErrorsComponent } from './list-errors/list-errors.component';
 import { FavoriteButtonComponent } from './buttons';
+import { FollowButtonComponent } from './buttons';
+import { CommentsComponent } from './comments/comments.component';
+import { ShowAuthedDirective } from './show-authed.directive';
 
-// import { FiltersComponent } from './filters/filters.component';
-// import { CarouselItemsComponent } from './carousel-items/carousel-items.component';
-
-
-// import { CommentsComponent } from './comments/comments.component';
-// import { SearchComponent } from './search/search.component';
-// import { ShowAuthedDirective } from './show-authed.directive';
 // import { ProfileProductsComponent } from './profile-products/profile-products.component';
 // import { ProfileFavoritesComponent } from './profile-favorites/profile-favorites.component';
 
-// import { FollowButtonComponent, FavoriteButtonComponent } from './buttons';
-// import { CardCategoriesComponent } from './card-categories/card-categories.component';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -49,19 +44,17 @@ import { FavoriteButtonComponent } from './buttons';
         SearchComponent,
         PaginationComponent,
         ListErrorsComponent,
-        FavoriteButtonComponent
+        FavoriteButtonComponent,
+        FollowButtonComponent,
+        CommentsComponent,
+        ShowAuthedDirective
 
-        // CardCategoriesComponent
-        // ProductDetailsComponent,
         // ShowAuthedDirective,
-        // FiltersComponent,
         // CommentsComponent,
         // SearchComponent,
         // ProfileProductsComponent,
         // ProfileFavoritesComponent,
-        // CardProductComponent,
-        // FollowButtonComponent,
-        // FavoriteButtonComponent
+
     ],
     exports: [
         CategoriesListComponent,
@@ -74,7 +67,10 @@ import { FavoriteButtonComponent } from './buttons';
         FormsModule,
         ReactiveFormsModule,
         ListErrorsComponent,
-        FavoriteButtonComponent
+        FavoriteButtonComponent,
+        FollowButtonComponent,
+        CommentsComponent,
+        ShowAuthedDirective
         
         // ShowAuthedDirective,
         // CommentsComponent,

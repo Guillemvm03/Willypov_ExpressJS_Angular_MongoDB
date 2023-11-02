@@ -1,64 +1,74 @@
-// import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-// import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy, ChangeDetectorRef, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-// import { Profile, ProfilesService, UserService } from '../../core';
-// import { concatMap ,  tap } from 'rxjs/operators';
-// import { of } from 'rxjs';
+import { Profile, ProfilesService, UserService, User } from '../../core';
+import { concatMap ,  tap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
-// @Component({
-//   selector: 'app-follow-button',
-//   templateUrl: './follow-button.component.html',
-//   changeDetection: ChangeDetectionStrategy.OnPush
-// })
-// export class FollowButtonComponent {
-//   constructor(
-//     private profilesService: ProfilesService,
-//     private router: Router,
-//     private userService: UserService,
-//     private cd: ChangeDetectorRef
-//   ) {}
+@Component({
+  selector: 'app-follow-button',
+  templateUrl: './follow-button.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class FollowButtonComponent {
+  constructor(
+    private profilesService: ProfilesService,
+    private router: Router,
+    private userService: UserService,
+    private cd: ChangeDetectorRef
+  ) {}
 
-//   @Input() profile: Profile;
-//   @Output() toggle = new EventEmitter<boolean>();
-//   isSubmitting = false;
+  ngOnInit(): void {
+    this.userService.currentUser.subscribe(
+      (userData) => {
+        this.currentUser = userData;
+      }
+    );
+  }
 
-//   toggleFollowing() {
-//     this.isSubmitting = true;
-//     // TODO: remove nested subscribes, use mergeMap
+  @Input() profile!: Profile;
+  @Output() toggle = new EventEmitter<boolean>();
+  isSubmitting = false;
+  currentUser!: User;
 
-//     this.userService.isAuthenticated.pipe(concatMap(
-//       (authenticated) => {
-//         // Not authenticated? Push to login screen
-//         if (!authenticated) {
-//           this.router.navigateByUrl('/login');
-//           return of(null);
-//         }
+  toggleFollowing() {
+    this.isSubmitting = true;
+    // TODO: remove nested subscribes, use mergeMap
 
-//         // Follow this profile if we aren't already
-//         if (!this.profile.following) {
-//           return this.profilesService.follow(this.profile.username)
-//           .pipe(tap(
-//             data => {
-//               this.isSubmitting = false;
-//               this.toggle.emit(true);
-//             },
-//             err => this.isSubmitting = false
-//           ));
+    this.userService.isAuthenticated.pipe(concatMap(
+      (authenticated) => {
+        // Not authenticated? Push to login screen
+        if (!authenticated) {
+          this.router.navigateByUrl('/login');
+          return of(null);
+        }
 
-//         // Otherwise, unfollow this profile
-//         } else {
-//           return this.profilesService.unfollow(this.profile.username)
-//           .pipe(tap(
-//             data => {
-//               this.isSubmitting = false;
-//               this.toggle.emit(false);
-//             },
-//             err => this.isSubmitting = false
-//           ));
-//         }
-//       }
-//     )).subscribe(() => {
-//       this.cd.markForCheck();
-//     });
-//   }
-// }
+        // Follow this profile if we aren't already
+        if (!this.profile.following) {
+          return this.profilesService.follow(this.profile.username)
+          .pipe(tap(
+            data => {
+             
+              this.isSubmitting = false;
+              this.toggle.emit(true);
+            },
+            err => this.isSubmitting = false
+          ));
+
+        // Otherwise, unfollow this profile
+        } else {
+          return this.profilesService.unfollow(this.profile.username)
+          .pipe(tap(
+            data => {
+              this.isSubmitting = false;
+              this.toggle.emit(false);
+            },
+            err => this.isSubmitting = false
+          ));
+        }
+      }
+    )).subscribe(() => {
+      this.cd.markForCheck();
+    });
+  }
+}

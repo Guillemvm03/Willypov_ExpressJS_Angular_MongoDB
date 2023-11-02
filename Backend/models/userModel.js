@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -27,16 +29,19 @@ const userSchema = new mongoose.Schema({
     },
     image: {
         type: String,
-        default: "https://static.productionready.io/images/smiley-cyrus.jpg"
+        default: function() {
+            const encryptedEmail = bcrypt.hashSync(this.email, 10);
+            return `https://i.pravatar.cc/500?u=${encryptedEmail}`;
+        }
     },
     likedProducts: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Article'
     }],
-    // followingUsers: [{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'User'
-    // }]
+    followingUsers: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 },
     {
         timestamps: true
@@ -75,33 +80,33 @@ userSchema.methods.toProfileJSON = function (user) {
         username: this.username,
         bio: this.bio,
         image: this.image,
-        // following: user ? user.isFollowing(this._id) : false
+        following: user ? user.isFollowing(this._id) : false
     }
 };
 
-// userSchema.methods.isFollowing = function (id) {
-//     const idStr = id.toString();
-//     for (const followingUser of this.followingUsers) {
-//         if (followingUser.toString() === idStr) {
-//             return true;
-//         }
-//     }
-//     return false;
-// };
+userSchema.methods.isFollowing = function (id) {
+    const idStr = id.toString();
+    for (const followingUser of this.followingUsers) {
+        if (followingUser.toString() === idStr) {
+            return true;
+        }
+    }
+    return false;
+};
 
-// userSchema.methods.follow = function (id) {
-//     if(this.followingUsers.indexOf(id) === -1){
-//         this.followingUsers.push(id);
-//     }
-//     return this.save();
-// };
+userSchema.methods.follow = function (id) {
+    if(this.followingUsers.indexOf(id) === -1){
+        this.followingUsers.push(id);
+    }
+    return this.save();
+};
 
-// userSchema.methods.unfollow = function (id) {
-//     if(this.followingUsers.indexOf(id) !== -1){
-//         this.followingUsers.remove(id);
-//     }
-//     return this.save();
-// };
+userSchema.methods.unfollow = function (id) {
+    if(this.followingUsers.indexOf(id) !== -1){
+        this.followingUsers.remove(id);
+    }
+    return this.save();
+};
 
 userSchema.methods.isLiking = function (id) {
     const idStr = id.toString();

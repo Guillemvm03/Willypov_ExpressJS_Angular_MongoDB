@@ -31,11 +31,16 @@ export class CardProductComponent implements OnInit {
     this.product.liked = favorited;
 
     if (favorited) {
+      console.log(this.product.likesCount);
       this.product.likesCount++;
+  
     } else {
+      console.log(this.product.likesCount);
       this.product.likesCount--;
+  
     }
   }
 
+ 
 
 }

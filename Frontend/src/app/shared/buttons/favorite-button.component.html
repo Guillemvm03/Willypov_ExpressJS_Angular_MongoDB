@@ -1,25 +1,16 @@
-<!-- <button class="btn btn-sm"
+
+<div [hidden]="product.liked">
+<a class="btn-link" (click)="toggleFavorite()" style="cursor: pointer;"><i class="bi bi-heart fs-4 text-danger"></i></a>
+</div>
+
+<div [hidden]="!product.liked">
+  <a class="btn-link" (click)="toggleFavorite()" style="cursor: pointer;"><i class="bi bi-heart-fill fs-4 text-danger"></i></a>
+  </div>
+
+  <!-- <button class="btn btn-sm"
  [ngClass]="{ 'disabled' : isSubmitting,
               'btn-outline-primary': !product.liked,
               'btn-primary': product.liked }"
  (click)="toggleFavorite()">
   <i class="ion-heart"></i> <ng-content></ng-content>
 </button> -->
-
-<!-- <div ngIf="productLiked">
-  <button><a href="#" class="btn-link"><i class="bi bi-heart fs-4 text-danger"></i></a></button>
-</div> -->
-
-<!-- <div ngIf="!productLiked">
-  <button><a href="#" class="btn-link"><i class="bi bi-heart-fill fs-4 text-danger"></i></a></button>
-  </div> -->
-
-
-
-<div [hidden]="product.liked">
-<a class="btn-link" (click)="toggleFavorite()"><i class="bi bi-heart fs-4 text-danger"></i></a>
-</div>
-
-<div [hidden]="!product.liked">
-  <a class="btn-link" (click)="toggleFavorite()"><i class="bi bi-heart-fill fs-4 text-danger"></i></a>
-  </div>

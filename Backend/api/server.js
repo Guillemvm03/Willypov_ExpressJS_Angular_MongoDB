@@ -25,6 +25,7 @@ app.use('/api/products', require('../routes/productRoutes.js'));
 app.use('/api/carousel', require('../routes/carouselRoutes.js'));
 app.use('/api', require('../routes/userRoutes'));
 app.use('/api', require('../routes/profileRoutes'));
+app.use('/api', require('../routes/commentRoutes'));
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);

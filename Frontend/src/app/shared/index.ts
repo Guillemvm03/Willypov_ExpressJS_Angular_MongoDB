@@ -9,8 +9,8 @@ export * from './products-list/products-list.component';
 export * from './carousel/carousel.component';
 export * from './list-errors/list-errors.component';
 export * from './buttons/favorite-button.component';
-
-
+export * from './buttons/follow-button.component';
+export * from './comments/comments.component';
 
 // export * from './card-categories/card-categories.component';
 
