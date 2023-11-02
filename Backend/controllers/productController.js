@@ -97,6 +97,7 @@ const CategoriesFromProduct = AsyncHandler(async (req, res) => {
 
 
     if(req.loggedin){
+        const loginUser = await User.findById(req.userId).exec();
         return await res.status(200).json({
             products: await Promise.all(category.products.map(async productId => {
                 const productObj = await Product.findById(productId).exec();
@@ -131,6 +132,7 @@ const related_products = AsyncHandler(async (req, res) => {
     }
 
     if(req.loggedin){
+        const loginUser = await User.findById(req.userId).exec();
         return await res.status(200).json({
             products: await Promise.all(category.products.map(async productId => {
                 const productObj = await Product.findById(productId).exec();
