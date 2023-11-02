@@ -77,19 +77,18 @@
    
     <hr style="background-color: #333;">
 
-    <!-- <h3 class="my-4">Related Products</h3>
-  
-    <div class="row">
-  
-      <div class="col-md-3 col-sm-6 mb-4">
-        <a href="#">
-              <img class="img-fluid" src="https://via.placeholder.com/500x300" alt="">
-            </a>
-      </div>
-  
-    </div> -->
+    <h3 class="my-4">Related Products</h3>
+
+    <div class="contenedor">
+      <app-related *ngFor="let product of listProducts" [product]="product"></app-related>
+    </div>
+
     
+
   <br><br>
+
+
+  <hr style="background-color: #333;">
 
   <div class="comments-section">
     <app-comments *ngFor="let comment of comments" [comment]="comment" (deleteComment)="delete_comment(comment)"></app-comments>

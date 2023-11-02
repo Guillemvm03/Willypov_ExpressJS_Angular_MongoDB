@@ -19,6 +19,7 @@ import { FavoriteButtonComponent } from './buttons';
 import { FollowButtonComponent } from './buttons';
 import { CommentsComponent } from './comments/comments.component';
 import { ShowAuthedDirective } from './show-authed.directive';
+import { RelatedComponent } from './related/related.component';
 
 // import { ProfileProductsComponent } from './profile-products/profile-products.component';
 // import { ProfileFavoritesComponent } from './profile-favorites/profile-favorites.component';
@@ -47,7 +48,8 @@ import { ShowAuthedDirective } from './show-authed.directive';
         FavoriteButtonComponent,
         FollowButtonComponent,
         CommentsComponent,
-        ShowAuthedDirective
+        ShowAuthedDirective,
+        RelatedComponent
 
         // ShowAuthedDirective,
         // CommentsComponent,
@@ -70,7 +72,8 @@ import { ShowAuthedDirective } from './show-authed.directive';
         FavoriteButtonComponent,
         FollowButtonComponent,
         CommentsComponent,
-        ShowAuthedDirective
+        ShowAuthedDirective,
+        RelatedComponent
         
         // ShowAuthedDirective,
         // CommentsComponent,

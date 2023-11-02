@@ -38,6 +38,10 @@ export class ProductService {
     return this.http.get<Product>(`${URL}/${slug}`);
   }
 
+  get_related(slug: String): Observable<Product> {
+    return this.http.get<Product>(`${URL}/${slug}/related`);
+  }
+
   get_products_from_category(slug: String, params: any): Observable<{products: Product[], product_count: number}> {
     return this.apiService.get_products('products/category/', slug, new HttpParams({fromObject:params}));
   }

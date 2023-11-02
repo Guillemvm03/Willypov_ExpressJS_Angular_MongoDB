@@ -48,4 +48,10 @@
             color: white !important;
         }
 
+        .contenedor {
+            display: grid;
+            grid-template-columns: repeat(3, 370px);
+            grid-gap: 1px; /* Espacio entre tarjetas */
+        }
+
         
