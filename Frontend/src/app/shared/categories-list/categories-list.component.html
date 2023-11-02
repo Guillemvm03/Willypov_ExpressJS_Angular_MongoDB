@@ -9,29 +9,8 @@ infinite-scroll
 
     <div *ngFor="let category of categories">
       <img src="../../../assets/img/{{category.image}}" [routerLink]="['/shop/categories/', category.slug]">
-      <!-- <h1>{{ category.id_cat }}</h1> -->
+     
     </div>
 
   </div> 
 </div>
-
-
-
-<!-- <div *ngFor="let category of categories">
-  <img src="../../../assets/img/{{category.image}}" [routerLink]="['/shop/categories/', category.slug]">
-  <h1>{{ category.id_cat }}</h1>
-</div> -->
-
-
-<!-- <div class="col-md-4" *ngFor="let category of categories">
-  <div class="cards">
-    <div class="card-body">
-      <img src="../../../assets/img/{{category.image}}" [routerLink]="['/shop/categories/', category.slug]">
-     <h1>{{category.id_cat}}</h1>
-    </div>
-  </div>
-</div> -->
-
-
-
-

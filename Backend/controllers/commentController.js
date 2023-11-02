@@ -91,7 +91,8 @@ const deleteComment = AsyncHandler(async (req, res) => {
     const { slug, id } = req.params;
 
     const product = await Product.findOne({slug}).exec();
-
+    
+    
     if (!product) {
         return res.status(401).json({
             message: "Product Not Found"
@@ -106,9 +107,7 @@ const deleteComment = AsyncHandler(async (req, res) => {
     if (comment.author.toString() === commenter._id.toString()) {
         await product.removeComment(comment._id);
         await Comment.deleteOne({ _id: comment._id });
-        return res.status(200).json({
-            message: "comment has been successfully deleted!!!"
-        });
+        res.json({type: 'success', msg:'Comment deleted'});
     } else {
         return res.status(403).json({
             error: "only the author of the comment can delete the comment"

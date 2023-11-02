@@ -55,17 +55,25 @@
         "location": "Ontinyent",
         "product_images": ["Sudadera_azul.jpg", "Sudadera_azul_2.jpg", "Sudadera_azul_3.jpg"]
     },
+    {
+        "name": "Camiseta Willypov",
+        "price": 2000,
+        "description": "Camiseta original Willypov",
+        "id_category": "ropa-mgymvj",
+        "location": "Aielo de Malferit",
+        "product_images": ["camisetawilly_1.jpg", "camisetawilly_2.jpg", "camisetawilly_3.jpg"]
+    },
 
     {
         "id_cat": "moviles-kae5u6",
         "category_name" : "Móviles",
-        "image" : "patata"
+        "image" : "Moviles.png"
     },
 
     {
         "id_cat": "ropa-mgymvj",
         "category_name" : "Ropa",
-        "image" : "pepito"
+        "image" : "Ropa.png"
     },
 
 

@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -27,7 +29,10 @@ const userSchema = new mongoose.Schema({
     },
     image: {
         type: String,
-        default: "https://static.productionready.io/images/smiley-cyrus.jpg"
+        default: function() {
+            const encryptedEmail = bcrypt.hashSync(this.email, 10);
+            return `https://i.pravatar.cc/500?u=${encryptedEmail}`;
+        }
     },
     likedProducts: [{
         type: mongoose.Schema.Types.ObjectId,

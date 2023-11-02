@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DetailsComponent } from './details.component';
+// import { DetailsCommentComponent } from './details-comment.component';
 import { DetailsRoutingModule } from './details-routing.module';
 import { SharedModule } from '../shared';
 
@@ -12,6 +13,7 @@ import { SharedModule } from '../shared';
     ],
     declarations: [
         DetailsComponent
+        // DetailsCommentComponent
     ],
     providers: [
     ],

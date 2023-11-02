@@ -48,7 +48,6 @@ export class UserService {
         // Set isAuthenticated to true
         this.isAuthenticatedSubject.next(true);
       }
-
       purgeAuth() {
         // Remove JWT from localstorage
         this.jwtService.destroyToken();
@@ -80,7 +79,7 @@ export class UserService {
       update(user : User): Observable<User> {
         console.log(user);
         
-        return this.http.put<User>(`${URL_user}`,  { user } )
+        return this.http.put<User>(`${URL_user}`,   user  )
         .pipe(map(data => {
           // Update the currentUser observable
           this.currentUserSubject.next(user);

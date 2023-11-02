@@ -15,7 +15,7 @@ export class SettingsComponent implements OnInit {
   user: User = {} as User;
   settingsForm!: FormGroup;
   isSubmitting = false;
-
+  userprofileurl!:string;
   
 
   constructor(
@@ -45,21 +45,19 @@ export class SettingsComponent implements OnInit {
     this.router.navigateByUrl('/');
   }
 
-  submitForm() {
+    submitForm() {
     this.isSubmitting = true;
 
     // update the model
     this.updateUser(this.settingsForm.value);
 
     this.userService.update(this.user).subscribe(
-      (updatedUser:any) => this.router.navigateByUrl('/'),
-      (err:any) => {
+      (updatedUser:any) => {
+        this.router.navigateByUrl('/');
+      },
+      (error:any) => {
         this.isSubmitting = false;
-        const errorResponse = new HttpErrorResponse({
-          error: 'Internal Server Error',
-          status: 500,
-          statusText: 'Server Error'
-        });
+        console.error(error);
       }
     );
   }

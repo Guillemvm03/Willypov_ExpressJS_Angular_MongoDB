@@ -3,7 +3,8 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+<div class="header">
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark ng-dark bg-dark">
   <!-- <a class="navbar-brand" ></a> -->
   <img src="../../../../assets/img/logo.png" routerLink="home" height="90" width="90">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,16 +13,18 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <li class="nav-item">                      </li>
       <li class="nav-item active">
         <a class="nav-link" routerLink="home">
-          <i class="fa fa-home" ></i>
+          <i class="bi bi-house" ></i>
           Home
           <span class="sr-only">(current)</span>
           </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="shop">
-          <i class="fa fa-envelope-o">
+          <i class="bi bi-bag">
+            <!-- <i class="bi bi-bag"></i> -->
             <span class="badge badge-danger"></span>
           </i>
           Shop
@@ -32,14 +35,25 @@
  
     <div class="my-2 my-lg-0">
       <div>
+
           <div class="dropdown" [hidden]="!UserActive">
-            <a id="imageDropdown" data-toggle="dropdown" class="log-icon" routerLink="/settings">
-              <img src="{{currentUser.image}}" alt="Perfil" class="rounded-circle" width="50px" height="50px" >
+          <div class="dropdown me-3">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="{{currentUser.image}}" alt="Perfil" class="rounded-circle" width="70px" height="70px" style="box-shadow: 0 0 5px #00FF00;">
             </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" [routerLink]="['/profile', currentUser.username]">Profile</a></li>
+              <li><a class="dropdown-item" routerLink="settings">Settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+            </ul>
           </div>
+        </div>
+          
       </div>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit" routerLink="/login" [hidden]="UserActive">Login</button>
       <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" routerLink="/register" [hidden]="UserActive">Register</button>  
     </div>
   </div>
 </nav>
+</div>

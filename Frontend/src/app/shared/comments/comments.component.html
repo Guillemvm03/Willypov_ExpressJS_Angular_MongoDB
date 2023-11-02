@@ -1,0 +1,14 @@
+<div class="comment initial card mb-3">
+  <div class="comment-avatar-container card-header d-flex align-items-center" style="cursor: pointer;" [routerLink]="['/profile', comment.author.username]">
+      <img class="rounded-circle me-2" src="{{comment.author.image}}" style="width: 55px; height: 55px;"/>
+      <h5 class="comment-title card-title m-0">{{ comment.author.username }}</h5>
+  </div>
+  <div class="card-body">
+    
+    <p class="comment-text card-text">{{ comment.body }}</p>
+    <div [hidden]="!canModify" class="comment-delete-icon float-end" *appShowAuthed="true"><i class="bi bi-trash fs-4 text-danger" (click)="deleteClicked()" style="cursor: pointer;"></i></div>
+    <p class="comment-time-stamp card-text"><small class="text-muted">{{ comment.createdAt | date: 'short'}}</small></p>
+    
+  </div>
+
+</div>

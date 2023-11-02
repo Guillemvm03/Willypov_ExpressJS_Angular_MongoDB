@@ -1,31 +1,25 @@
+
+
+
+<!-- The app-search component is used to search for products. It emits a searchEvent when the user types in the search bar. The get_list_filtered method is called with the searchEvent as a parameter to filter the list of products. -->
+
 <app-search (searchEvent)="get_list_filtered($event)" class="subheader"></app-search>
+
+<!-- The app-filters component is used to filter the list of products by category. It emits a filterEvent when the user selects a category. The get_list_filtered method is called with the filterEvent as a parameter to filter the list of products. The listCategories input is used to display the available categories in the filter dropdown. -->
+
 <app-filters (filterEvent)="get_list_filtered($event)" [listCategories]="listCategories"></app-filters>
+
+<!-- The list of products is displayed using the app-card-product component. The *ngFor directive is used to loop through the list of products and display each product as a card. -->
+
 <div *ngIf="listProducts" class="container_list_products">
     <div class="no_products" *ngIf="listProducts.length == 0">No products</div>
     <app-card-product class="item" *ngFor="let product of listProducts" [product]="product"></app-card-product>
 </div>
 
+<!-- Pagination is included to navigate through the list of products. The totalPages array is used to display the page numbers in the pagination. The currentPage variable is used to keep track of the current page. The setPageTo method is called when a page number is clicked to update the currentPage variable. -->
 
-<!-- <app-pagination></app-pagination> -->
+<!-- <app-pagination (filterEvent)="get_list_filtered($event)" [totalPages]="totalPages" [listProducts]="listProducts"></app-pagination> -->
 
-<!-- <div class="d-flex justify-content-center align-items-center">
-<nav aria-label="...">
-    <ul class="pagination">
-      <li class="page-item disabled">
-        <a class="page-link">Previous</a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item active" aria-current="page">
-        <a class="page-link" href="#">2 <span class="visually-hidden">(current)</span></a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-      </li>
-    </ul>
-  </nav>
-</div>
-<br> -->
 <div class="d-flex justify-content-center align-items-center">
 <div class="pagination">
   <nav *ngIf="listProducts.length != 0 && totalPages.length != 1">
