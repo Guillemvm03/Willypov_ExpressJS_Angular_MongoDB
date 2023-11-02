@@ -10,13 +10,25 @@ const bcrypt = require('bcrypt');
 // @return User
 
 const registerUser = asyncHandler(async (req, res) => {
-    // const {user}  = req.body;
-    const user  = req.body;
+    const user = req.body;
 
     // confirm data
     if (!user || !user.email || !user.username || !user.password) {
         return res.status(400).json({message: "All fields are required"});
-        // return res.status(400).json();
+    } else if (user.username.length < 3 || user.username.length > 20) {
+        return res.status(400).json({message: "Username must be between 3 and 20 characters long"});
+    } else if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(user.password)) {
+        return res.status(400).json({message: "Password must be at least 6 characters long and contain at least one uppercase letter, one lowercase letter, and one number"});
+    } else if (!/\S+@\S+\.\S+/.test(user.email)) {
+        return res.status(400).json({message: "Invalid email format"});
+    }
+
+
+    // check if user already exists
+    const existingUserByEmail = await User.findOne({ email: user.email }).exec();
+    const existingUserByUsername = await User.findOne({ username: user.username }).exec();
+    if (existingUserByEmail || existingUserByUsername) {
+        return res.status(409).json({ message: 'User already exists' });
     }
 
     // hash password

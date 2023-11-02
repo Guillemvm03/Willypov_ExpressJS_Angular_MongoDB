@@ -1,6 +1,6 @@
-
-<mdb-carousel [controls]="true" [indicators]="false" [animation]="'slide'" [interval]="4500" [dark]="true" *ngIf="listCarousel.length">
-  <mdb-carousel-item *ngFor="let carousel of listCarousel">
+<br><br>
+<mdb-carousel [controls]="true" [indicators]="false" [animation]="'slide'" [interval]="4500" [dark]="true" *ngIf="listCarousel.length" class="justify-content-center justify-content-end">
+  <mdb-carousel-item *ngFor="let carousel of listCarousel" class="text-center align-items-center">
     <img src="../../../assets/img/{{carousel.image}}" [routerLink]="['/shop/categories/', carousel.slug]" class="d-block w-20 m-auto" *ngIf="home">
 
     

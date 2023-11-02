@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-
 import { FormBuilder, FormGroup, FormControl, Validators} from '@angular/forms';
-import { UserService } from '../core';
+import { Errors, UserService } from '../core';
 
 @Component({
   selector: 'app-auth',
@@ -13,16 +12,15 @@ import { UserService } from '../core';
 export class AuthComponent implements OnInit {
 
   boton_login: boolean = false;
-
+  errors: Errors = {errors: {}};
+  // errors!: String;
   isSubmitting = false;
-
   authType: String = '';
-
   ruta_boton!: string | null;
-
   authForm: FormGroup;
 
   constructor(
+    private cd: ChangeDetectorRef,
     private ActivateRoute: ActivatedRoute,
     private fb: FormBuilder,
     private router: Router,
@@ -50,20 +48,27 @@ export class AuthComponent implements OnInit {
 
   submitForm() {
     this.isSubmitting = true;
-
+    this.errors = {errors: {}};
+    // this.errors = ''
     const credentials = this.authForm.value;
     this.userService.attemptAuth(this.authType, credentials).subscribe(
       (data:any) => this.router.navigateByUrl('/'),
       (err:any) => {
         this.isSubmitting = false;
-        const errorResponse = new HttpErrorResponse({
-          error: 'Internal Server Error',
-          status: 500,
-          statusText: 'Server Error'
-        });
+        this.errors = err;
+        console.log(this.errors);
+        this.cd.markForCheck();
+
+        // const errorResponse = new HttpErrorResponse({
+        //   error: 'Internal Server Error',
+        //   status: 500,
+        //   statusText: 'Server Error'
+        // });
         
-        throw errorResponse;
+        // throw errorResponse;
       }
     );
   }
+
+
 }

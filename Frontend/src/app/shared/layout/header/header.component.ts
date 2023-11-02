@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 
 import { User, UserService } from '../../../core';
 
@@ -20,6 +20,8 @@ export class HeaderComponent implements OnInit {
     private UserService: UserService
   ) {}
 
+
+
   ngOnInit() {
 
     this.UserService.isAuthenticated.subscribe(
@@ -31,9 +33,15 @@ export class HeaderComponent implements OnInit {
     this.UserService.currentUser.subscribe(
       (userData) => {
         this.currentUser = userData;
-        console.log(this.currentUser);
+
       }
     );
+  }
+
+  
+  logout() {
+    this.UserService.purgeAuth();
+    
   }
   
 }

@@ -48,7 +48,6 @@ export class UserService {
         // Set isAuthenticated to true
         this.isAuthenticatedSubject.next(true);
       }
-
       purgeAuth() {
         // Remove JWT from localstorage
         this.jwtService.destroyToken();

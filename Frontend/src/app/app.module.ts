@@ -8,6 +8,7 @@ import { FooterComponent, HeaderComponent, SharedModule } from './shared';
 import { AuthModule } from './auth/auth.module';
 import { SettingsModule } from './settings/settings.module';
 // import { NgbModule} from  '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,5 +28,6 @@ import { SettingsModule } from './settings/settings.module';
   ],
   providers: [],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }
