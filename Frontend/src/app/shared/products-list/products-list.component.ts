@@ -84,7 +84,7 @@ export class ProductsListComponent implements OnInit {
             this.filters.category = this.slug_Category;
           }
           this.listProducts = data.products;
-          console.log(this.listProducts);
+          // console.log(this.listProducts);
           this.totalPages = Array.from(new Array(Math.ceil(data.product_count/this.limit)), (val, index) => index + 1);
         },
         error: e => console.error(e)
