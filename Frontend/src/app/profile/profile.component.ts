@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { User, UserService, Profile } from '../core';
+import { User, UserService, Profile, ProfilesService } from '../core';
 import { concatMap ,  tap } from 'rxjs/operators';
 
 @Component({
@@ -14,7 +14,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private profilesService: ProfilesService
   ) { }
 
   profile!: Profile;
@@ -26,7 +27,7 @@ export class ProfileComponent implements OnInit {
   // isUser: boolean = false;
 
 
-
+profiledata!:any;
   
 
   ngOnInit(): void {
@@ -40,6 +41,11 @@ export class ProfileComponent implements OnInit {
         )
       });
 
+      this.profilesService.get(this.profile.username).subscribe(
+        (profile: Profile) => {
+        console.log(profile);
+        }
+      )
 
   }
 

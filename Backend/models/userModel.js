@@ -129,6 +129,7 @@ userSchema.methods.isFollowed = function (id) {
     return false;
 };
 
+
 userSchema.methods.followed = function (id) {
     if(this.followedByUsers.indexOf(id) === -1){
         this.followedByUsers.push(id);
