@@ -23,6 +23,9 @@ export class DetailsComponent implements OnInit {
     isSubmitting = false;
     isDeleting = false;
     user_image!: string | null;
+
+
+    listProducts: Product[] = [];
     // isUser!: boolean;
 
     constructor(
@@ -38,8 +41,24 @@ export class DetailsComponent implements OnInit {
         this.slug = this.ActivatedRoute.snapshot.paramMap.get('slug');
         this.get_product();
         this.get_user_author();
+        this.get_related();
               
     }
+
+    get_related(): void {
+        if (typeof this.slug === 'string') {
+            this.ProductService.get_related(this.slug).subscribe({
+                next: (data: any) => {
+                    this.listProducts = data.products;
+                },
+                error: e => { 
+                    // this.ToastrService.error("Product not found");
+                    console.log(e);
+                }
+            })
+        }
+        console.log(this.listProducts);
+      }
 
 
 

@@ -114,6 +114,39 @@ const CategoriesFromProduct = AsyncHandler(async (req, res) => {
     
 })
 
+const related_products = AsyncHandler(async (req, res) => {
+
+    const slug = req.params.id;
+
+    const product = await Product.findOne({slug}).exec();
+
+    if (!product) {
+        res.status(400).json({message: "Producto no encontrado"});
+    }
+
+    const category = await Category.findOne({id_cat: product.id_category}).exec();
+
+    if (!category) {
+        res.status(400).json({message: "Categoria no encontrada"});
+    }
+
+    if(req.loggedin){
+        return await res.status(200).json({
+            products: await Promise.all(category.products.map(async productId => {
+                const productObj = await Product.findById(productId).exec();
+                return await productObj.toProductResponse(loginUser);
+            }))
+        })
+    }else{
+        return await res.status(200).json({
+            products: await Promise.all(category.products.map(async productId => {
+                const productObj = await Product.findById(productId).exec();
+                return await productObj.toProductResponse(false);
+            }))
+        })
+    }
+})
+
 
 
 const create_product = AsyncHandler(async (req, res) => {
@@ -295,5 +328,6 @@ module.exports = {
     update_product,
     CategoriesFromProduct,
     likeProduct,
-    dislikeProduct
+    dislikeProduct,
+    related_products
 }

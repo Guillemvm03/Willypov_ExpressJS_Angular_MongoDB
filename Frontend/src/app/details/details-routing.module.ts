@@ -7,7 +7,7 @@ const routes: Routes = [
         path: ':slug',
         component: DetailsComponent,
         resolve: {}
-    }
+    },
 ];
 
 @NgModule({

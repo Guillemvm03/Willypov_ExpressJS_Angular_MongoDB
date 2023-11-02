@@ -11,6 +11,7 @@ export * from './list-errors/list-errors.component';
 export * from './buttons/favorite-button.component';
 export * from './buttons/follow-button.component';
 export * from './comments/comments.component';
+export * from './related/related.component';
 
 // export * from './card-categories/card-categories.component';
 
