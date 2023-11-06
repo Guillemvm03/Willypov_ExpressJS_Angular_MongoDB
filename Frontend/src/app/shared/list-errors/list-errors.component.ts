@@ -11,32 +11,13 @@ import { Errors } from '../../core';
 export class ListErrorsComponent {
 
   formattedErrors: Array<string> = [];
-  // @Input() errors: Errors = {} as Errors;
-  // @Input() errors: Errors = {errors: {}};
-
-  // constructor() { }
-
-  // ngOnInit(): void {
-  //   console.log(this.errors);
-
-  // }
-
-  @Input()
-  set errors(errorList: any) {
-    // console.log(Object.keys(errorList.error || {}));
-    // errorList=errorList.error.message
-    this.formattedErrors = errorList.errors;
-    // Object.keys(errorList.errors || {})
-    //   .map(key => `${key} ${errorList.errors[key]}`);
-      console.log(this.formattedErrors)
-  }
   
-  // @Input()
-  // set errors(errorList: HttpErrorResponse) {
-  //   console.log(errorList);
-  //   const errorMessage = errorList.error.message;
-  //   console.log(errorMessage);
-  // }
+  @Input()
+  set errors(errorList: Errors) {
+    this.formattedErrors = Object.keys(errorList.error || {})
+      .map(key => `${key} ${errorList.error[key]}`);
+      console.log(this.formattedErrors);
+  }
 
   get errorList() { return this.formattedErrors; }
 

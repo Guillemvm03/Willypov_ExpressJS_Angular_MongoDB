@@ -29,4 +29,12 @@ export class ProfilesService {
     return this.http.delete<Profile>( URL_profile +  username + '/follow', {})
   }
 
+  getFollowing(username: string): Observable<{users: Profile[]}>  {
+    return this.apiService.get(username + '/following');
+  }
+
+  getFollow(username: string): Observable<{users: Profile[]}>  {
+    return this.apiService.get(username + '/follow');
+  }
+  
 }

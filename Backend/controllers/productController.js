@@ -97,6 +97,7 @@ const CategoriesFromProduct = AsyncHandler(async (req, res) => {
 
 
     if(req.loggedin){
+        const loginUser = await User.findById(req.userId).exec();
         return await res.status(200).json({
             products: await Promise.all(category.products.map(async productId => {
                 const productObj = await Product.findById(productId).exec();
@@ -131,6 +132,7 @@ const related_products = AsyncHandler(async (req, res) => {
     }
 
     if(req.loggedin){
+        const loginUser = await User.findById(req.userId).exec();
         return await res.status(200).json({
             products: await Promise.all(category.products.map(async productId => {
                 const productObj = await Product.findById(productId).exec();
@@ -304,20 +306,27 @@ const dislikeProduct = AsyncHandler(async (req, res) => {
     });
 });
 
-// const find_product_name = AsyncHandler(async (req, res) => {
-//     let search = new RegExp(req.params.search);
 
-//     const product = await Product.find({ product_name: { $regex: search } });
+const get_favorites = AsyncHandler(async (req, res) => {
+          
+        const email = req.userEmail;    
 
-//     if(!product) {
-//         return res.status(401).json({
-//             message: "Product Not Found"
-//         })
-//     }
+        const loginUser = await User.findOne({ email }).populate({ path: 'likedProducts', populate: { path: 'author'} }).exec();
+        const user_likes = await User.findOne({ email }).exec()
 
-//     res.json(product.map((product) => product.toNameJSONFor()));
-
-// })
+      if (!loginUser) {
+          return res.status(401).json({
+              message: "User Not Found"
+          });
+      }
+        
+        return await res.status(200).json({
+            product: await Promise.all(loginUser.likedProducts.map(async product => {
+                return await product.toProductResponse(user_likes);
+            }))
+        });
+    
+  });
 
 module.exports = {
     findAll_product,
@@ -329,5 +338,6 @@ module.exports = {
     CategoriesFromProduct,
     likeProduct,
     dislikeProduct,
-    related_products
+    related_products,
+    get_favorites
 }

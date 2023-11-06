@@ -21,9 +21,9 @@ import { CommentsComponent } from './comments/comments.component';
 import { ShowAuthedDirective } from './show-authed.directive';
 import { RelatedComponent } from './related/related.component';
 
-// import { ProfileProductsComponent } from './profile-products/profile-products.component';
-// import { ProfileFavoritesComponent } from './profile-favorites/profile-favorites.component';
-
+import { ProfileProductsComponent } from './profile-products/profile-products.component';
+import { ProfileFavoritesComponent } from './profile-favorites/profile-favorites.component';
+import { ProfileFollowsComponent } from './profile-follows/profile-follows.component';
 
 @NgModule({
     imports: [
@@ -49,13 +49,10 @@ import { RelatedComponent } from './related/related.component';
         FollowButtonComponent,
         CommentsComponent,
         ShowAuthedDirective,
-        RelatedComponent
-
-        // ShowAuthedDirective,
-        // CommentsComponent,
-        // SearchComponent,
-        // ProfileProductsComponent,
-        // ProfileFavoritesComponent,
+        RelatedComponent,
+        ProfileProductsComponent,
+        ProfileFavoritesComponent,
+        ProfileFollowsComponent,
 
     ],
     exports: [
@@ -73,15 +70,10 @@ import { RelatedComponent } from './related/related.component';
         FollowButtonComponent,
         CommentsComponent,
         ShowAuthedDirective,
-        RelatedComponent
-        
-        // ShowAuthedDirective,
-        // CommentsComponent,
-        // ProfileProductsComponent,
-        // ProfileFavoritesComponent,
-        // CardProductComponent,
-        // FollowButtonComponent,
-        // FavoriteButtonComponent
+        RelatedComponent,
+        ProfileProductsComponent,
+        ProfileFavoritesComponent,
+        ProfileFollowsComponent,
     ],
 })
 

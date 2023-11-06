@@ -14,4 +14,10 @@ router.post('/:username/follow', verifyJWT, profileController.followUser);
 router.delete('/:username/follow', verifyJWT, profileController.unFollowUser);
 
 
+//get followers and following users for each user
+
+router.get('/:username/follow', profileController.getFollowUsers);
+
+router.get('/:username/following', profileController.getfollowingUsers);
+
 module.exports = router;
