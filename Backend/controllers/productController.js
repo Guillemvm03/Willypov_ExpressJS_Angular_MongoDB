@@ -235,7 +235,62 @@ const deleteAll_products = AsyncHandler(async (req, res) => {
 
 const update_product = AsyncHandler(async (req, res) => {
 
-    res.json("producto actualizado");
+    const product_update = req.body;
+
+    const id = req.userId
+
+    const loginUser = await User.findById(id).exec();
+
+    if (!loginUser) {
+        return res.status(401).json({
+            message: "User Not Found"
+        });
+    }
+
+    if(!product_update){
+        res.status(400).json({message: "Es necesario un producto para actualizar"});
+    }
+
+
+    const slug = req.params.id;
+
+    product = await Product.findOne({slug}).exec();
+
+
+    if (!product) {
+        res.status(400).json({message: "Producto no encontrado"});
+    }
+
+    let product_author = product.author.toString();
+    let id_user = loginUser._id.toString();
+
+    
+
+    if (id_user !== product_author) {
+        res.status(401).json({message: "No tienes permiso para actualizar este producto"});
+    }
+
+    // res.json('funcione');
+
+
+    if (product_update.description){
+        product.description = product_update.description;
+    }
+
+    if(product_update.price){
+        product.price = product_update.price;
+    }
+
+    if (product_update.location) {
+        product.location = product_update.location;
+    }
+
+    await product.save();
+    
+    return res.status(200).json({
+        product: await product.toProductResponse(loginUser)
+    })
+
 
 })
 

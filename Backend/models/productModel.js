@@ -62,6 +62,7 @@ product_schema.methods.toProductResponse = async function (user) {
         description: this.description,
         id_category: this.id_category,
         state: this.state,
+        location: this.location,
         product_images: this.product_images,
         liked: user ? user.isLiking(this._id) : false,
         likesCount: this.likesCount,
