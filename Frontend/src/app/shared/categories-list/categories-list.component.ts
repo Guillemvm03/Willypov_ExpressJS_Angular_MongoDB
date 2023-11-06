@@ -35,6 +35,7 @@ export class CategoriesListComponent implements OnInit {
     const params = this.getRequestParams(this.offset, this.limit)
     this.CategoryService.get_categories(params).subscribe({
       next: (data:any) => {
+        
               this.categories = data.categories;
               this.limit = this.limit + 3;
               // console.log(this.categories);

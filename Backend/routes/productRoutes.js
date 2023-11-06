@@ -28,5 +28,7 @@ router.post('/:id/like', verifyJWT, products.likeProduct);
 
 router.delete('/:id/like', verifyJWT, products.dislikeProduct );
 
+router.get('/user/favorites', verifyJWT, products.get_favorites);
+
 
 module.exports = router;

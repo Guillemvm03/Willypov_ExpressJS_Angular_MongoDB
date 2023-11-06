@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
     },
     likedProducts: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Article'
+        ref: 'Product'
     }],
     followingUsers: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -129,6 +129,7 @@ userSchema.methods.isFollowed = function (id) {
     return false;
 };
 
+
 userSchema.methods.followed = function (id) {
     if(this.followedByUsers.indexOf(id) === -1){
         this.followedByUsers.push(id);
@@ -146,8 +147,8 @@ userSchema.methods.unfollowed = function (id) {
 
 userSchema.methods.isLiking = function (id) {
     const idStr = id.toString();
-    for (const article of this.likedProducts) {
-        if (article.toString() === idStr) {
+    for (const product of this.likedProducts) {
+        if (product.toString() === idStr) {
             return true;
         }
     }

@@ -12,9 +12,11 @@ export * from './buttons/favorite-button.component';
 export * from './buttons/follow-button.component';
 export * from './comments/comments.component';
 export * from './related/related.component';
+export * from './profile-products/profile-products.component';
+
+// export * from './/profile-favorites/profile-favorites.component';
 
 // export * from './card-categories/card-categories.component';
 
 // export * from './comments/comments.component'
 
-// export * from './profile-products/profile-products.component';

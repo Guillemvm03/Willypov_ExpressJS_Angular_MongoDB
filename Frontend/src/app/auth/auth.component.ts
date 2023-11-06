@@ -12,7 +12,7 @@ import { Errors, UserService } from '../core';
 export class AuthComponent implements OnInit {
 
   boton_login: boolean = false;
-  errors: Errors = {errors: {}};
+  errors: Errors = {error: {}};
   // errors!: String;
   isSubmitting = false;
   authType: String = '';
@@ -48,7 +48,7 @@ export class AuthComponent implements OnInit {
 
   submitForm() {
     this.isSubmitting = true;
-    this.errors = {errors: {}};
+    this.errors = {error: {}};
     // this.errors = ''
     const credentials = this.authForm.value;
     this.userService.attemptAuth(this.authType, credentials).subscribe(
